@@ -8,13 +8,21 @@
 .grid {
     display: grid;
     height: 95vh;
-    grid-template-rows: 30px 100px auto 30px;
+    grid-template-rows: 30px 3em auto 30px;
     grid-gap: 10px;
 }
 
 .header {
     display: flex;
     justify-content: space-around;
+}
+
+.headerBar {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    grid-template-rows: repeat(3, 1fr);
+    grid-auto-flow: column;
+    justify-content: center;
 }
 
 .footer {
