@@ -5,6 +5,10 @@
     }
 }
 
+body {
+    min-width: 600px;
+}
+
 .grid {
     display: grid;
     height: 95vh;
