@@ -1,0 +1,41 @@
+@media (min-width: 1000px) {
+    body {
+        padding-left: 20%;
+        padding-right: 20%;
+    }
+}
+
+.grid {
+    display: grid;
+    height: 95vh;
+    grid-template-rows: 30px 100px auto 30px;
+    grid-gap: 10px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-around;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-around;
+}
+
+.score {
+    display: grid;
+    grid-template-columns: 1fr 0.5fr 1fr 50px;
+    padding-bottom: 30px;
+}
+
+.scoreline {
+    justify-self: center;
+}
+
+.homeScorers {
+    grid-column: 1;
+}
+
+.awayScorers {
+    grid-column: 3;
+}
