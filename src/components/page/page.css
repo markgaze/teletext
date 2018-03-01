@@ -1,0 +1,12 @@
+.grid {
+    display: grid;
+    height: 95vh;
+    grid-template-rows: 30px 3em auto 30px;
+    grid-gap: 10px;
+    max-width: 1000px;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-around;
+}

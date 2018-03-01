@@ -95,7 +95,7 @@ a.red:active, .red a:active {
 
 @font-face {
     font-family: Mode7;
-    src: url('MODE7GX3.TTF'), url('MODE7GX3.EOT');  /* .EOT is for IE */
+    src: url('MODE7GX3.TTF')/*, url('MODE7GX3.EOT');   .EOT is for IE */
 }
 
 body, td.teletext {

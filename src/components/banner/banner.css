@@ -1,0 +1,7 @@
+.headerBar {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  grid-template-rows: repeat(3, 1fr);
+  grid-auto-flow: column;
+  justify-content: center;
+}
