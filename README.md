@@ -1,6 +1,7 @@
 # Teletext
 
-[![Codefresh build status]( https://g.codefresh.io/api/badges/build?repoOwner=MarkGaze&repoName=teletext&branch=master&pipelineName=teletext&accountName=markgaze&type=cf-2)]( https://g.codefresh.io/repositories/MarkGaze/teletext/builds?filter=trigger:build;branch:master;service:5a973b802adcb30001490f3e~teletext)
+CI Status:
+[![CircleCI](https://circleci.com/gh/MarkGaze/teletext.svg?style=svg)](https://circleci.com/gh/MarkGaze/teletext)
 
 A nostalgic emulation of the teletext football scores page
 
