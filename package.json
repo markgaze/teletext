@@ -20,7 +20,8 @@
     "@types/react": "^16.0.39",
     "@types/react-dom": "^16.0.4",
     "jest-junit": "^3.6.0",
-    "typescript": "^2.7.2"
+    "typescript": "^2.7.2",
+    "codecov": "^3.0.0"
   },
   "jest-junit": {
     "suiteName": "jest tests",
