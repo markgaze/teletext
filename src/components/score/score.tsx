@@ -1,5 +1,6 @@
 import * as React from 'react';
 import './score.css';
+import ScoreModel from './score.model';
 
 export default class Score extends React.Component<ScoreProps, ScoreState> {
   constructor(props: ScoreProps) {
@@ -8,17 +9,17 @@ export default class Score extends React.Component<ScoreProps, ScoreState> {
   }
 
   render() {
-    var homeScorers = this.state.homeScorers.map(text => 
+    var homeScorers = this.state.scoreData.homeScorers.map(text => 
       <p className="white" key={text}>{text}</p>
     );
-    var awayScorers = this.state.awayScorers.map(text => 
+    var awayScorers = this.state.scoreData.awayScorers.map(text => 
       <p className="white" key={text}>{text}</p>
     );
     return (
       <div className="score">
-        <p className="cyan">{this.state.homeTeam.toUpperCase()}</p>
-        <p className="white scoreline">{this.state.homeTeamScore}-{this.state.awayTeamScore}</p>
-        <p className="cyan">{this.state.awayTeam.toUpperCase()}</p>
+        <p className="cyan">{this.state.scoreData.homeTeam.toUpperCase()}</p>
+        <p className="white scoreline">{this.state.scoreData.homeTeamScore}-{this.state.scoreData.awayTeamScore}</p>
+        <p className="cyan">{this.state.scoreData.awayTeam.toUpperCase()}</p>
         <p className="white" />
         <div className="homeScorers">
           {homeScorers}
@@ -32,19 +33,9 @@ export default class Score extends React.Component<ScoreProps, ScoreState> {
 }
 
 interface ScoreProps {
-  homeTeam: string;
-  homeTeamScore: number;
-  homeScorers: string[];
-  awayTeam: string;
-  awayTeamScore: number;
-  awayScorers: string[];
+  scoreData: ScoreModel;
 }
 
 interface ScoreState {
-  homeTeam: string;
-  homeTeamScore: number;
-  homeScorers: string[];
-  awayTeam: string;
-  awayTeamScore: number;
-  awayScorers: string[];
+  scoreData: ScoreModel;
 }
