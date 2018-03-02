@@ -35,6 +35,9 @@ jobs:
       - run: npm run coverage
 
       - store_artifacts:
+          path: ./coverage/clover.xml
+          prefix: tests
+      - store_artifacts:
           path: coverage
           prefix: coverage
       - store_test_results:
