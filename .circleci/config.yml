@@ -41,4 +41,4 @@ jobs:
           path: coverage
           prefix: coverage
       - store_test_results:
-          path: ./coverage/junit.xml
+          path: ./coverage
