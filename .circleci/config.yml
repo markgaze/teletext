@@ -34,10 +34,12 @@ jobs:
 
       - run: npm run coverage
 
-      - run: cat ./coverage/lcov.info | codecov
-
       - store_artifacts:
           path: coverage
           prefix: coverage
       - store_test_results:
           path: ./coverage
+
+      test:
+        post:
+          - bash <(curl -s https://codecov.io/bash)
