@@ -34,8 +34,8 @@ jobs:
 
       - run: npm run coverage
 
-      - run: npm install -g codecov
-      
+      - run: npm install -g codecov.io
+
       - run: cat ./coverage/lcov.info | codecov
 
       - store_artifacts:
