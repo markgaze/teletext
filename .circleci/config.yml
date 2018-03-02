@@ -40,6 +40,4 @@ jobs:
       - store_test_results:
           path: ./coverage
 
-    test:
-      post:
-        - bash <(curl -s https://codecov.io/bash)
+      - run: <(curl -s https://codecov.io/bash)
