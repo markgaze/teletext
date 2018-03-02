@@ -12,6 +12,7 @@
     "build": "react-scripts-ts build",
     "test": "react-scripts-ts test --env=jsdom",
     "coverage": "react-scripts-ts test --env=jsdom --coverage --testResultsProcessor=jest-junit",
+    "codecov": "codecov",
     "eject": "react-scripts-ts eject"
   },
   "devDependencies": {
