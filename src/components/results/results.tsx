@@ -3,9 +3,17 @@ import './results.css';
 import ScoreModel from '../score/score.model';
 import Score from '../score/score';
 
-export default class Results extends React.Component {
+export default class Results extends React.Component<{}, ResultsState> {
+  constructor(props: {}) {
+    super(props);
+    this.state = { games: [] };
+  }
+  componentWillMount() {
+    this.getGames();
+  }
+
   render() {
-    var games = this.getGames().map(score => 
+    var games = this.state.games.map(score => 
       <Score key={score.homeTeam} scoreData={score} />
     );
 
@@ -17,31 +25,40 @@ export default class Results extends React.Component {
     );
   }
 
-  getGames(): ScoreModel[] {
-      return [{
-              homeTeam: 'Sunderland',
-              homeTeamScore: 4,
-              homeScorers: ['Wickham 16, 86', 'Borini 45', 'Giaccherini 76'],
-              awayTeam: 'Cardiff City',
-              awayTeamScore: 0,
+  getGames() {
+    fetch('https://api.football-data.org/v1/competitions/445/fixtures/?matchday=28', {
+      headers: {
+        'X-Auth-Token': '6ef3af956d7f4c6e9db971d4fe244334'
+      }
+    })
+      .then(res => res.json())
+      .then(games => this.setState({ 
+        games: games.fixtures.map((g: GameData) => {
+          return {
+              homeTeam: g.homeTeamName.replace(' FC', ''),
+              homeTeamScore: g.result.goalsHomeTeam,
+              homeScorers: [],
+              awayTeam: g.awayTeamName.replace(' FC', ''),
+              awayTeamScore: g.result.goalsAwayTeam,
               awayScorers: []
-          },
-          {
-              homeTeam: 'Liverpool',
-              homeTeamScore: 0,
-              homeScorers: [],
-              awayTeam: 'Chelsea',
-              awayTeamScore: 2,
-              awayScorers: ['Ba 45', 'Willian 90']
-          },
-          {
-              homeTeam: 'Crystal Palace',
-              homeTeamScore: 0,
-              homeScorers: [],
-              awayTeam: 'Manchester City',
-              awayTeamScore: 2,
-              awayScorers: ['Dzeko 4', 'Toure 43']
-          }
-      ];
+          };
+        })
+        .sort((a: ScoreModel, b: ScoreModel) => a.homeTeam > b.homeTeam)
+      }));
   }
+}
+
+interface ResultsState {
+  games: ScoreModel[];
+}
+
+interface GameData {
+  homeTeamName: string;
+  awayTeamName: string;
+  result: ResultData;
+}
+
+interface ResultData {
+  goalsHomeTeam: number;
+  goalsAwayTeam: number;
 }
