@@ -11,7 +11,7 @@
     "start": "react-scripts-ts start",
     "build": "react-scripts-ts build",
     "test": "react-scripts-ts test --env=jsdom",
-    "coverage": "react-scripts-ts test --env=jsdom --coverage",
+    "coverage": "react-scripts-ts test --env=jsdom --coverage --json --outputFile=./coverage/test-output.json",
     "eject": "react-scripts-ts eject"
   },
   "devDependencies": {
