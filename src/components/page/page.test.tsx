@@ -325,10 +325,10 @@ describe('Page', () => {
     });
 
     const div = document.createElement('div');
-    ReactDOM.render((
+    ReactDOM.render(
       <MemoryRouter>
         <Page />
       </MemoryRouter>
-    ), div);
+    , div);
   });
 });
