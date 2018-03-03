@@ -15,11 +15,13 @@ export default class Score extends React.Component<ScoreProps, ScoreState> {
     var awayScorers = this.state.scoreData.awayScorers.map(text => 
       <p className="white" key={text}>{text}</p>
     );
+    var centerText = this.gameHasStarted() ? '-' : 'v';
     return (
       <div className="score">
         <p className="cyan">{this.state.scoreData.homeTeam.toUpperCase()}</p>
-        <p className="white scoreline">{this.state.scoreData.homeTeamScore}-{this.state.scoreData.awayTeamScore}</p>
+        <p className="white scoreline">{this.state.scoreData.homeTeamScore}{centerText}{this.state.scoreData.awayTeamScore}</p>
         <p className="cyan">{this.state.scoreData.awayTeam.toUpperCase()}</p>
+        <p>{this.state.scoreData.kickoffTime}</p>
         <p className="white" />
         <div className="homeScorers">
           {homeScorers}
@@ -29,6 +31,10 @@ export default class Score extends React.Component<ScoreProps, ScoreState> {
         </div>
       </div>
     );
+  }
+
+  private gameHasStarted() {
+    return this.state.scoreData.kickoffTime === '' && (this.state.scoreData.homeTeamScore !== null && this.state.scoreData.awayTeamScore !== null);
   }
 }
 
