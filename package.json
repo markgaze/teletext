@@ -16,13 +16,15 @@
     "eject": "react-scripts-ts eject"
   },
   "devDependencies": {
+    "@types/fetch-mock": "^6.0.0",
     "@types/jest": "^22.1.4",
     "@types/node": "^9.4.6",
     "@types/react": "^16.0.39",
     "@types/react-dom": "^16.0.4",
+    "codecov": "^3.0.0",
+    "fetch-mock": "^6.0.1",
     "jest-junit": "^3.6.0",
-    "typescript": "^2.7.2",
-    "codecov": "^3.0.0"
+    "typescript": "^2.7.2"
   },
   "jest-junit": {
     "suiteName": "jest tests",
