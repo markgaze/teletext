@@ -26,7 +26,7 @@ export default class Results extends React.Component<{}, ResultsState> {
   }
 
   getGames() {
-    fetch('https://api.football-data.org/v1/competitions/445/fixtures/?matchday=28', {
+    fetch('https://api.football-data.org/v1/competitions/445/fixtures/?matchday=29', {
       headers: {
         'X-Auth-Token': '6ef3af956d7f4c6e9db971d4fe244334'
       }
