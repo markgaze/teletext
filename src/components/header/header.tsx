@@ -1,16 +1,15 @@
 import * as React from 'react';
 import './header.css';
-import HeaderState from './header-state';
 
-export default class Header extends React.Component<{}, HeaderState> {
+export default class Header extends React.Component<HeaderProps, HeaderState> {
   dayOfWeek: string[] = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
   monthName: string[] = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
   intervalId: NodeJS.Timer;
 
-  constructor(props: {}) {
+  constructor(props: HeaderProps) {
     super(props);
     this.state = {
-      pageNumber: 303,
+      pageNumber: props.pageNumber,
       date: '',
       time: ''
     };
@@ -48,7 +47,7 @@ export default class Header extends React.Component<{}, HeaderState> {
   updateClock() {
     var d = new Date();
     var state: HeaderState = {
-      pageNumber: 303,
+      pageNumber: this.props.pageNumber,
       date: this.GetDateString(d),
       time: this.GetTimeString(d)
     };
@@ -62,4 +61,14 @@ export default class Header extends React.Component<{}, HeaderState> {
   private GetDateString(d: Date): string {
     return `${this.dayOfWeek[d.getDay()]} ${this.addLeadingSpace(d.getDate())} ${this.monthName[d.getMonth()]}`;
   }
+}
+
+interface HeaderState {
+  date: string;
+  time: string;
+  pageNumber: string;
+}
+
+interface HeaderProps {
+  pageNumber: string;
 }

@@ -4,16 +4,16 @@ import Header from '../header/header';
 import Banner from '../banner/banner';
 import Results from '../results/results';
 import Footer from '../footer/footer';
-import { Route, Switch, Redirect } from 'react-router';
+import { Route, Switch, Redirect, RouteProps } from 'react-router';
 import Table from '../table/table';
 import Error404 from '../error/error';
 import Home from '../home/home';
 
-export default class Page extends React.Component {
+export default class Page extends React.Component<RouteProps, {}> {
   render() {
     return (
         <div className="grid">
-        <Header />
+        <Header pageNumber={this.props.location!.pathname.replace('/', '')}/>
         <Banner />
         <div className="main">
           <Switch>
