@@ -5,8 +5,12 @@ import registerServiceWorker from './registerServiceWorker';
 import './assets/teletext.css';
 import './index.css';
 
+import { Route, BrowserRouter as Router } from 'react-router-dom';
+
 ReactDOM.render(
-  <Page />,
+  <Router>
+    <Route path="/" component={Page} />
+  </Router>,
   document.getElementById('root') as HTMLElement
 );
 registerServiceWorker();
