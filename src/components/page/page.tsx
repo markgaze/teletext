@@ -11,9 +11,13 @@ import Home from '../home/home';
 
 export default class Page extends React.Component<RouteProps, {}> {
   render() {
+    var pageNum = '100';
+    if (this.props.location) {
+      pageNum = this.props.location!.pathname.replace('/', '');
+    }
     return (
         <div className="grid">
-        <Header pageNumber={this.props.location!.pathname.replace('/', '')}/>
+        <Header pageNumber={pageNum}/>
         <Banner />
         <div className="main">
           <Switch>
