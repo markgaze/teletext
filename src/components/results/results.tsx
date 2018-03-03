@@ -40,11 +40,24 @@ export default class Results extends React.Component<{}, ResultsState> {
               homeScorers: [],
               awayTeam: g.awayTeamName.replace(' FC', ''),
               awayTeamScore: g.result.goalsAwayTeam,
-              awayScorers: []
+              awayScorers: [],
+              kickoffTime: this.convertDateToKickoffTime(new Date(g.date))
           };
         })
         .sort((a: ScoreModel, b: ScoreModel) => a.homeTeam > b.homeTeam)
       }));
+  }
+
+  convertDateToKickoffTime(gameDate: Date): string {
+    if (new Date() > gameDate) {
+      return '';
+    } else {
+      return `${gameDate.getHours()}:${this.addLeadingZero(gameDate.getMinutes())}`;
+    }
+  }
+
+  addLeadingZero(num: number) {
+    return `${(num < 10 ? '0' : '')}${num}`; 
   }
 }
 
@@ -56,6 +69,7 @@ interface GameData {
   homeTeamName: string;
   awayTeamName: string;
   result: ResultData;
+  date: string;
 }
 
 interface ResultData {

@@ -21,6 +21,7 @@ export default class Score extends React.Component<ScoreProps, ScoreState> {
         <p className="cyan">{this.state.scoreData.homeTeam.toUpperCase()}</p>
         <p className="white scoreline">{this.state.scoreData.homeTeamScore}{centerText}{this.state.scoreData.awayTeamScore}</p>
         <p className="cyan">{this.state.scoreData.awayTeam.toUpperCase()}</p>
+        <p>{this.state.scoreData.kickoffTime}</p>
         <p className="white" />
         <div className="homeScorers">
           {homeScorers}

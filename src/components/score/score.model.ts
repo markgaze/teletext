@@ -5,4 +5,5 @@ export default interface ScoreModel {
   awayTeam: string;
   awayTeamScore: number;
   awayScorers: string[];
+  kickoffTime?: string;
 }
