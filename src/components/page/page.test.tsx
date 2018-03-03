@@ -2,6 +2,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as FetchMock from 'fetch-mock';
 import Page from './page';
+import { MemoryRouter } from 'react-router';
 
 describe('Page', () => {
   afterEach(FetchMock.restore);
@@ -324,6 +325,10 @@ describe('Page', () => {
     });
 
     const div = document.createElement('div');
-    ReactDOM.render(<Page /> , div);
+    ReactDOM.render((
+      <MemoryRouter>
+        <Page />
+      </MemoryRouter>
+    ), div);
   });
 });
