@@ -49,8 +49,12 @@ export default class Results extends React.Component<{}, ResultsState> {
   }
 
   convertDateToKickoffTime(gameDate: Date): string {
-    if (new Date() > gameDate) {
+    var now = new Date();
+    const dayOfWeek: string[] = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    if (now > gameDate) {
       return '';
+    } else if (now.getDay() !== gameDate.getDay()) {
+      return dayOfWeek[gameDate.getDay()];
     } else {
       return `${gameDate.getHours()}:${this.addLeadingZero(gameDate.getMinutes())}`;
     }
