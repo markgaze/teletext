@@ -15,7 +15,7 @@ export default class Score extends React.Component<ScoreProps, ScoreState> {
     var awayScorers = this.state.scoreData.awayScorers.map(text => 
       <p className="white" key={text}>{text}</p>
     );
-    var centerText = this.state.scoreData.homeTeamScore ? '-' : 'v';
+    var centerText = this.state.scoreData.kickoffTime === '' ? '-' : 'v';
     return (
       <div className="score">
         <p className="cyan">{this.state.scoreData.homeTeam.toUpperCase()}</p>
