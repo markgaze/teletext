@@ -3,6 +3,7 @@ import './page.css';
 import Header from '../header/header';
 import Banner from '../banner/banner';
 import Results from '../results/results';
+import Footer from '../footer/footer';
 
 export default class Page extends React.Component {
   render() {
@@ -13,12 +14,7 @@ export default class Page extends React.Component {
         <div className="main">
           <Results />
         </div>
-        <div className="footer">
-          <a href="#" className="red">Next Page</a>
-          <a href="#" className="green">Football</a>
-          <a href="#" className="yellow">Top Sport</a>
-          <a href="#" className="cyan">Sport</a>
-        </div>
+        <Footer />
       </div>
     );
   }
