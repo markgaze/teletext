@@ -1,0 +1,17 @@
+.error {
+  display: grid;
+  grid-template-rows: 1fr 2fr 1fr;
+  height: 70%;
+  justify-content: space-around;
+  padding-top: 100px;
+}
+
+.errorText {
+  grid-row: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.link {
+  grid-row: 3;
+}
