@@ -15,7 +15,7 @@ export default class Score extends React.Component<ScoreProps, ScoreState> {
     var awayScorers = this.state.scoreData.awayScorers.map(text => 
       <p className="white" key={text}>{text}</p>
     );
-    var centerText = this.state.scoreData.kickoffTime === '' ? '-' : 'v';
+    var centerText = this.gameHasStarted() === '' ? '-' : 'v';
     return (
       <div className="score">
         <p className="cyan">{this.state.scoreData.homeTeam.toUpperCase()}</p>
@@ -31,6 +31,10 @@ export default class Score extends React.Component<ScoreProps, ScoreState> {
         </div>
       </div>
     );
+  }
+
+  private gameHasStarted() {
+    return this.state.scoreData.kickoffTime || (this.state.scoreData.homeTeamScore !== null && this.state.scoreData.awayTeamScore !== null);
   }
 }
 
