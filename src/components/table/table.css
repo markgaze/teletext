@@ -1,0 +1,26 @@
+.title {
+  display: grid;
+  grid-template-columns: auto 70px;
+}
+
+.table-header {
+  padding-top: 3vh;
+  padding-bottom: 3vh;
+  display: grid;
+  grid-template-columns: auto repeat(7, 50px);
+  grid-gap: 10px;
+}
+
+.table-row {
+  display: grid;
+  grid-template-columns: 50px auto repeat(7, 50px);
+  grid-gap: 10px;
+}
+
+.table-row:nth-child(even) {
+  color: #00ffff;
+}
+
+.right-align {
+  text-align: center;
+}
