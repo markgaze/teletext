@@ -17,3 +17,9 @@ body {
       padding-right: 20%;
   }
 }
+
+.doubleText {
+  grid-row: 1;
+  display: flex;
+  flex-direction: column;
+}

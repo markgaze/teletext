@@ -4,11 +4,6 @@
   grid-gap: 10px;
 }
 
-.dbl {
-  display: flex;
-  flex-direction: column;
-}
-
 .option {
   display: grid;
   grid-template-columns: 10fr 1fr;
