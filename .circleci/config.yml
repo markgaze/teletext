@@ -43,6 +43,9 @@ jobs:
         command: now && now alias teletext-beta
 workflows:
   version: 2
+  pull_request:
+    jobs:
+      - build
   test_build_deploy:
     jobs:
       - build
