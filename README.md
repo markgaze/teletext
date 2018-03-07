@@ -1,7 +1,7 @@
 # Teletext
 
 CI Status:
-[![CircleCI](https://circleci.com/gh/MarkGaze/teletext.svg?style=svg)](https://circleci.com/gh/MarkGaze/teletext)
+[![CircleCI](https://circleci.com/gh/MarkGaze/teletext/tree/master.svg?style=svg)](https://circleci.com/gh/MarkGaze/teletext/tree/master)
 
 Code Coverage: [![codecov](https://codecov.io/gh/MarkGaze/teletext/branch/master/graph/badge.svg)](https://codecov.io/gh/MarkGaze/teletext)
 
