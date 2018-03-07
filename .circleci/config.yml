@@ -28,19 +28,19 @@ jobs:
       - store_test_results:
           path: ./coverage
       - persist_to_workspace:
-        root: .
-        paths: .
+          root: .
+          paths: .
   deployment:
     docker:
-      -image: 'circleci/node:latest'
+      - image: 'circleci/node:latest'
     working_directory: ~/repo
     steps:
       - attach_workspace:
-        at: ~/repo
+          at: ~/repo
       - run: npm install -g now
       - deploy:
-        name: Deploy & Alias
-        command: now && now alias teletext-beta
+          name: Deploy & Alias
+          command: now && now alias teletext-beta
 workflows:
   version: 2
   pull_request:
