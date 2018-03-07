@@ -30,7 +30,7 @@ jobs:
       - persist_to_workspace:
         root: .
         paths: .
-  deploy:
+  deployment:
     docker:
       -image: 'circleci/node:latest'
     working_directory: ~/repo
@@ -46,7 +46,7 @@ workflows:
   test_build_deploy:
     jobs:
       - build
-      - deploy:
+      - deployment:
         requires:
           - build
         filters:
