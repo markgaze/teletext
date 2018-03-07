@@ -3,39 +3,22 @@ jobs:
   build:
     docker:
       - image: circleci/node:7.10
-      
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/mongo:3.4.4
-
     working_directory: ~/repo
-
     steps:
       - checkout
-
-      # Download and cache dependencies
       - restore_cache:
           keys:
           - v1-dependencies-{{ checksum "package.json" }}
-          # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
-
       - run: npm install
-
       - save_cache:
           paths:
             - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
-      
+          key: v1-dependencies-{{ checksum "package.json" }}   
       - run: npm run build
-        
       - run: npm run test
-
       - run: npm run coverage
-
       - run: npm run codecov
-
       - store_artifacts:
           path: ./coverage/clover.xml
           prefix: tests
@@ -44,3 +27,29 @@ jobs:
           prefix: coverage
       - store_test_results:
           path: ./coverage
+      - persist_to_workspace:
+          root: .
+          paths: .
+  deployment:
+    docker:
+      - image: 'circleci/node:latest'
+    working_directory: ~/repo
+    steps:
+      - attach_workspace:
+          at: ~/repo
+      - run: npm install -g now
+      - deploy:
+          name: Deploy & Alias
+          command: now && now alias teletext-beta
+workflows:
+  version: 2
+  test_build_deploy:
+    jobs:
+      - build
+      - deployment:
+          requires:
+            - build
+          filters:
+            branches:
+              only:
+                - master
