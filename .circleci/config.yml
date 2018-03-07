@@ -37,7 +37,7 @@ jobs:
     steps:
       - attach_workspace:
           at: ~/repo
-      - run: npm install -g now
+      - run: sudo npm install -g now
       - deploy:
           name: Deploy & Alias
           command: now && now alias teletext-beta
