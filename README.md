@@ -8,3 +8,18 @@ Code Coverage: [![codecov](https://codecov.io/gh/MarkGaze/teletext/branch/master
 A nostalgic emulation of the teletext football scores page
 
 Font and lots of other useful information/tools from [Galax Teletext](http://www.galax.xyz/TELETEXT/INDEX.HTM)
+
+## Build
+
+Prerequisites:
+- [Node.js](https://nodejs.org/) (>8.3)
+
+Run `npm install` and then `npm build` from the solution directory.
+
+## Launch site
+
+Run `npm start` from the solution directory. The page will launch on http://localhost:3000
+
+## Run tests
+
+Run `npm test`
