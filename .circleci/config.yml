@@ -40,7 +40,7 @@ jobs:
       - run: sudo npm install -g --unsafe-perm now
       - deploy:
           name: Deploy & Alias
-          command: now -t {NOW_TOKEN} && now alias -t {NOW_TOKEN} teletext-beta
+          command: now -t ${NOW_TOKEN} && now alias -t ${NOW_TOKEN} teletext-beta
 workflows:
   version: 2
   test_build_deploy:
