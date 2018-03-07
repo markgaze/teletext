@@ -35,5 +35,14 @@
     "titleTemplate": "{title}",
     "ancestorSeparator": " › ",
     "usePathForSuiteName": "true"
+  },
+  "now": {
+    "alias": [
+      "teletext",
+      "teletext-beta"
+    ],
+    "type": "npm",
+    "public": true,
+    "name": "teletext"
   }
 }
