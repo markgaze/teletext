@@ -11,7 +11,7 @@ export default class Banner extends React.Component {
           <span>&#xe22a;&#xe200;&#xe204;&#xe22b;&#xe22a;&#xe200;&#xe204;&#xe22b;&#xe22a;&#xe200;&#xe207;&#xe22b;</span>
           <span>&#xe202;&#xe203;&#xe203;&#xe203;&#xe202;&#xe203;&#xe203;&#xe203;&#xe202;&#xe203;&#xe203;&#xe203;</span>
         </div>
-        {DoubleTextGenerator.CreateText(' FOOTBALL', 'white', 'blue')}
+        {DoubleTextGenerator.CreateText(' CEEFAX', 'white', 'blue')}
       </div>
     );
   }
