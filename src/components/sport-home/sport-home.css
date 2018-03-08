@@ -1,0 +1,10 @@
+.sport-container {
+  display: grid;
+  grid-template-rows: 1fr 1fr; 
+  grid-gap: 10px;
+}
+
+.option {
+  display: grid;
+  grid-template-columns: 10fr 1fr;
+}
