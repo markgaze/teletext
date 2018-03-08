@@ -2,6 +2,7 @@ import * as React from 'react';
 import './home.css';
 import { Link } from 'react-router-dom';
 import DoubleTextGenerator from '../../helpers/double-text';
+import OptionCreator from '../../helpers/options';
 
 export default class Home extends React.Component {
   render() {
@@ -55,13 +56,6 @@ export default class Home extends React.Component {
   }
 
   getOption(text: string, pageNum: string) {
-    return (
-      <Link className="white" to={pageNum}>
-        <div className="option">
-          <p className="yellow">{text}</p>
-          <p>{pageNum}</p>
-        </div>
-      </Link>
-    );
+    return OptionCreator.GetOption(text, pageNum);
   }
 }
