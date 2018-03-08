@@ -34,7 +34,8 @@ export default class FootballAPI {
           };
         })
         .sort((a: ScoreModel, b: ScoreModel) => a.homeTeam > b.homeTeam)
-      );
+      )
+      .catch(err => err);
   }
 
   private convertDateToKickoffTime(gameDate: Date): string {
