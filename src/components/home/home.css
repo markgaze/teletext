@@ -1,10 +1,33 @@
 .container {
   display: grid;
-  grid-template-rows: 1fr 1fr; 
-  grid-gap: 10px;
+  grid-template-rows: auto 56vh auto;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 20px;
+  grid-row-gap: 10px;
+}
+
+hr.blue {
+  border-color: blue;
+  margin-top: 7px;
+  margin-bottom: 7px;
+}
+.main-headline {
+  grid-column-start: 1;
+  grid-column-end: 3;
 }
 
 .option {
   display: grid;
   grid-template-columns: 10fr 1fr;
+  padding-bottom: 1px;
+}
+
+.spacer {
+  height: 1em;
+}
+
+.page-footer {
+  grid-row: 3;
+  grid-column-start: 1;
+  grid-column-end: 3;
 }

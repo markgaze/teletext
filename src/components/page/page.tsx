@@ -8,6 +8,7 @@ import { Route, Switch, Redirect, RouteProps } from 'react-router';
 import Table from '../table/table';
 import Error404 from '../error/error';
 import Home from '../home/home';
+import SportHome from '../sport-home/sport-home';
 
 export default class Page extends React.Component<RouteProps, {}> {
   render() {
@@ -23,6 +24,7 @@ export default class Page extends React.Component<RouteProps, {}> {
           <Switch>
             <Route exact={true} path="/" render={() => (<Redirect to="/100" />)} />
             <Route path="/100" component={Home} />
+            <Route path="/300" component={SportHome} />
             <Route path="/303" component={Results} />
             <Route path="/324" component={Table} />
             <Route component={Error404} />
