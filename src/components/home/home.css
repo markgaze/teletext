@@ -16,12 +16,6 @@ hr.blue {
   grid-column-end: 3;
 }
 
-.option {
-  display: grid;
-  grid-template-columns: 10fr 1fr;
-  padding-bottom: 1px;
-}
-
 .spacer {
   height: 1em;
 }

@@ -23,3 +23,9 @@ body {
   display: flex;
   flex-direction: column;
 }
+
+.option {
+  display: grid;
+  grid-template-columns: 10fr auto;
+  padding-bottom: 1px;
+}

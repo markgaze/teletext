@@ -9,6 +9,14 @@ A nostalgic emulation of the teletext football scores page
 
 Font and lots of other useful information/tools from [Galax Teletext](http://www.galax.xyz/TELETEXT/INDEX.HTM)
 
+## Demos
+
+You can see a demo of the site at the following links:
+
+[Stable](https://teletext.now.sh)
+
+[Beta](https://teletext-beta.now.sh)
+
 ## Build
 
 Prerequisites:
