@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 import OptionCreator from './options';
 import { Link } from 'react-router-dom';
 
