@@ -1,37 +1,9 @@
 import FootballAPI from './football-data';
 import * as FetchMock from 'fetch-mock';
+import ScoreModel from '../../components/score/score.model';
 
 describe('Football Data API', () => {
   beforeAll(() => {
-    FetchMock.mock('glob:https://api.football-data.org/v1/competitions/*', {
-      status: 200,
-      body: {
-        '_links': {
-          'self': {
-            'href': 'http://api.football-data.org/v1/competitions/445'
-          },
-          'teams': {
-            'href': 'http://api.football-data.org/v1/competitions/445/teams'
-          },
-          'fixtures': {
-            'href': 'http://api.football-data.org/v1/competitions/445/fixtures'
-          },
-          'leagueTable': {
-            'href': 'http://api.football-data.org/v1/competitions/445/leagueTable'
-          }
-        },
-        'id': 445,
-        'caption': 'Premier League 2017/18',
-        'league': 'PL',
-        'year': '2017',
-        'currentMatchday': 30,
-        'numberOfMatchdays': 38,
-        'numberOfTeams': 20,
-        'numberOfGames': 380,
-        'lastUpdated': '2018-03-08T11:00:01Z'
-      }
-    });
-
     FetchMock.mock('glob:https://api.football-data.org/v1/competitions/*/fixtures/?matchday=*', {
       status: 200,
       body: {
@@ -347,6 +319,35 @@ describe('Football Data API', () => {
         ]
       }
     });
+
+    FetchMock.mock('glob:https://api.football-data.org/v1/competitions/*', {
+      status: 200,
+      body: {
+        '_links': {
+          'self': {
+            'href': 'http://api.football-data.org/v1/competitions/445'
+          },
+          'teams': {
+            'href': 'http://api.football-data.org/v1/competitions/445/teams'
+          },
+          'fixtures': {
+            'href': 'http://api.football-data.org/v1/competitions/445/fixtures'
+          },
+          'leagueTable': {
+            'href': 'http://api.football-data.org/v1/competitions/445/leagueTable'
+          }
+        },
+        'id': 445,
+        'caption': 'Premier League 2017/18',
+        'league': 'PL',
+        'year': '2017',
+        'currentMatchday': 30,
+        'numberOfMatchdays': 38,
+        'numberOfTeams': 20,
+        'numberOfGames': 380,
+        'lastUpdated': '2018-03-08T11:00:01Z'
+      }
+    });
   });
 
   afterAll(FetchMock.restore);
@@ -354,6 +355,16 @@ describe('Football Data API', () => {
   it('can get last weeks games', () => {
     var data = new FootballAPI().getLastWeeksGames(445);
     expect(data).toBeDefined();
+  });
+
+  it('can get correct scores', () => {
+    new FootballAPI()
+      .getLastWeeksGames(445)
+      .then((data: ScoreModel[]) => {
+        expect(data).toBeDefined();
+        expect(data[0]).toBeDefined();
+        expect(data[0].homeTeam).toBe('AFC Bournemouth');
+      });
   });
 
   it('can get this weeks games', () => {
