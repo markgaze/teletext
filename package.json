@@ -3,11 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@types/react-router-dom": "^4.2.4",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
-    "react-router-dom": "^4.2.2",
-    "react-scripts-ts": "2.13.0"
+    "@types/react-router-dom": "^4.3.1",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0",
+    "react-router-dom": "^4.3.1",
+    "react-scripts-ts": "^4.0.8"
   },
   "scripts": {
     "start": "react-scripts-ts start",
@@ -18,15 +18,16 @@
     "eject": "react-scripts-ts eject"
   },
   "devDependencies": {
-    "@types/fetch-mock": "^6.0.0",
-    "@types/jest": "^22.1.4",
-    "@types/node": "^9.4.6",
-    "@types/react": "^16.0.39",
-    "@types/react-dom": "^16.0.4",
-    "codecov": "^3.0.0",
-    "fetch-mock": "^6.0.1",
-    "jest-junit": "^3.6.0",
-    "typescript": "^2.7.2"
+    "@types/fetch-mock": "^7.2.0",
+    "@types/jest": "^23.3.10",
+    "@types/node": "^10.12.18",
+    "@types/react": "^16.7.18",
+    "@types/react-dom": "^16.0.11",
+    "codecov": "^3.1.0",
+    "fetch-mock": "^7.2.7",
+    "jest-junit": "^5.2.0",
+    "node-fetch": "^2.3.0",
+    "typescript": "^3.2.2"
   },
   "jest-junit": {
     "suiteName": "jest tests",
@@ -44,5 +45,11 @@
     "type": "npm",
     "public": true,
     "name": "teletext"
-  }
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }

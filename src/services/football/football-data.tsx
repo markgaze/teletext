@@ -2,35 +2,35 @@ import ScoreModel from '../../components/score/score.model';
 
 export default class FootballAPI {
   authToken: string = '6ef3af956d7f4c6e9db971d4fe244334';
-  url: string = 'https://api.football-data.org/v1';
+  url: string = 'https://api.football-data.org/v2';
   
   getLastWeeksGames(compId: number): Promise<ScoreModel[]> {
     return this.getCompetitionData(compId)
-      .then(comp => this.getGames(compId, comp.currentMatchday - 1));
+      .then(comp => this.getGames(compId, comp.currentSeason.currentMatchday - 1));
   }
 
   getThisWeeksGames(compId: number): Promise<ScoreModel[]> {
     return this.getCompetitionData(compId)
-      .then(comp => this.getGames(compId, comp.currentMatchday));
+      .then(comp => this.getGames(compId, comp.currentSeason.currentMatchday));
   }
 
   private getGames(compId: number, matchday: number): Promise<ScoreModel[]> {
-    return fetch(`${this.url}/competitions/${compId}/fixtures/?matchday=${matchday}`, {
+    return fetch(`${this.url}/competitions/${compId}/matches/?matchday=${matchday}`, {
       headers: {
         'X-Auth-Token': this.authToken
       }
     })
       .then(res => res.json())
       .then(games =>
-        games.fixtures.map((g: GameData) => {
+        games.matches.map((g: GameData) => {
           return {
-              homeTeam: g.homeTeamName.replace(' FC', ''),
-              homeTeamScore: g.result.goalsHomeTeam,
+              homeTeam: g.homeTeam.name.replace(' FC', ''),
+              homeTeamScore: g.score.fullTime.homeTeam,
               homeScorers: [],
-              awayTeam: g.awayTeamName.replace(' FC', ''),
-              awayTeamScore: g.result.goalsAwayTeam,
+              awayTeam: g.awayTeam.name.replace(' FC', ''),
+              awayTeamScore: g.score.fullTime.awayTeam,
               awayScorers: [],
-              kickoffTime: this.convertDateToKickoffTime(new Date(g.date))
+              kickoffTime: this.convertDateToKickoffTime(new Date(g.utcDate))
           };
         })
         .sort((a: ScoreModel, b: ScoreModel) => a.homeTeam > b.homeTeam)
@@ -55,7 +55,7 @@ export default class FootballAPI {
   }
 
   private getCompetitionData(compId: number) {
-    return fetch(`${this.url}/competitions/${445}`, {
+    return fetch(`${this.url}/competitions/${compId}`, {
       headers: {
         'X-Auth-Token': this.authToken
       }
@@ -65,13 +65,22 @@ export default class FootballAPI {
 }
 
 interface GameData {
-  homeTeamName: string;
-  awayTeamName: string;
-  result: ResultData;
-  date: string;
+  homeTeam: TeamData;
+  awayTeam: TeamData;
+  score: ScoreData;
+  utcDate: string;
 }
 
-interface ResultData {
-  goalsHomeTeam: number;
-  goalsAwayTeam: number;
+interface TeamData {
+  id: number;
+  name: string;
+}
+
+interface ScoreData {
+  fullTime: ScorelineData;
+}
+
+interface ScorelineData {
+  homeTeam: number;
+  awayTeam: number;
 }

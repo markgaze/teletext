@@ -4,341 +4,296 @@ import ScoreModel from '../../components/score/score.model';
 
 describe('Football Data API', () => {
   beforeAll(() => {
-    FetchMock.mock('glob:https://api.football-data.org/v1/competitions/*/fixtures/?matchday=*', {
+    FetchMock.mock('glob:https://api.football-data.org/v2/competitions/*/matches/?matchday=*', {
       status: 200,
       body: {
-        '_links': {
-          'self': {
-            'href': 'http://api.football-data.org/v1/competitions/445/fixtures'
-          },
-          'competition': {
-            'href': 'http://api.football-data.org/v1/competitions/445'
-          }
-        },
         'count': 10,
-        'fixtures': [{
-            '_links': {
-              'self': {
-                'href': 'http://api.football-data.org/v1/fixtures/159051'
-              },
-              'competition': {
-                'href': 'http://api.football-data.org/v1/competitions/445'
-              },
-              'homeTeam': {
-                'href': 'http://api.football-data.org/v1/teams/338'
-              },
-              'awayTeam': {
-                'href': 'http://api.football-data.org/v1/teams/70'
-              }
-            },
-            'date': '2018-02-24T12:30:00Z',
+        'filters': { 'matchday': '18' },
+        'competition': { 'id': 2021, 'area': { 'id': 2072, 'name': 'England' }, 'name': 'Premier League', 'code': 'PL', 'plan': 'TIER_ONE', 'lastUpdated': '2018-12-26T23:09:49Z' },
+        'matches': [
+          {
+            'id': 233193,
+            'season': { 'id': 151, 'startDate': '2018-08-10', 'endDate': '2019-05-12', 'currentMatchday': 19 },
+            'utcDate': '2018-12-21T20:00:00Z',
             'status': 'FINISHED',
-            'matchday': 28,
-            'homeTeamName': 'Leicester City FC',
-            'awayTeamName': 'Stoke City FC',
-            'result': {
-              'goalsHomeTeam': 1,
-              'goalsAwayTeam': 1,
-              'halfTime': {
-                'goalsHomeTeam': 0,
-                'goalsAwayTeam': 1
-              }
+            'matchday': 18,
+            'stage': 'REGULAR_SEASON',
+            'group': 'Regular Season',
+            'lastUpdated': '2018-12-22T22:55:01Z',
+            'score': {
+              'winner': 'AWAY_TEAM',
+              'duration': 'REGULAR',
+              'fullTime': { 'homeTeam': 0, 'awayTeam': 2 },
+              'halfTime': { 'homeTeam': 0, 'awayTeam': 1 },
+              'extraTime': { 'homeTeam': null, 'awayTeam': null },
+              'penalties': { 'homeTeam': null, 'awayTeam': null }
             },
-            'odds': null
+            'homeTeam': { 'id': 76, 'name': 'Wolverhampton Wanderers FC' },
+            'awayTeam': { 'id': 64, 'name': 'Liverpool FC' },
+            'referees': [
+              { 'id': 11585, 'name': 'Craig Pawson', 'nationality': null },
+              { 'id': 11530, 'name': 'Lee Betts', 'nationality': null },
+              { 'id': 11586, 'name': 'Richard West', 'nationality': null },
+              { 'id': 11605, 'name': 'Michael Oliver', 'nationality': null }
+            ]
           },
           {
-            '_links': {
-              'self': {
-                'href': 'http://api.football-data.org/v1/fixtures/159055'
-              },
-              'competition': {
-                'href': 'http://api.football-data.org/v1/competitions/445'
-              },
-              'homeTeam': {
-                'href': 'http://api.football-data.org/v1/teams/74'
-              },
-              'awayTeam': {
-                'href': 'http://api.football-data.org/v1/teams/394'
-              }
-            },
-            'date': '2018-02-24T15:00:00Z',
+            'id': 233196,
+            'season': { 'id': 151, 'startDate': '2018-08-10', 'endDate': '2019-05-12', 'currentMatchday': 19 },
+            'utcDate': '2018-12-22T12:30:00Z',
             'status': 'FINISHED',
-            'matchday': 28,
-            'homeTeamName': 'West Bromwich Albion FC',
-            'awayTeamName': 'Huddersfield Town',
-            'result': {
-              'goalsHomeTeam': 1,
-              'goalsAwayTeam': 2,
-              'halfTime': {
-                'goalsHomeTeam': 0,
-                'goalsAwayTeam': 0
-              }
+            'matchday': 18,
+            'stage': 'REGULAR_SEASON',
+            'group': 'Regular Season',
+            'lastUpdated': '2018-12-23T13:30:07Z',
+            'score': {
+              'winner': 'HOME_TEAM',
+              'duration': 'REGULAR',
+              'fullTime': { 'homeTeam': 3, 'awayTeam': 1 },
+              'halfTime': { 'homeTeam': 1, 'awayTeam': 0 },
+              'extraTime': { 'homeTeam': null, 'awayTeam': null },
+              'penalties': { 'homeTeam': null, 'awayTeam': null }
             },
-            'odds': null
+            'homeTeam': { 'id': 57, 'name': 'Arsenal FC' },
+            'awayTeam': { 'id': 328, 'name': 'Burnley FC' },
+            'referees': [
+              { 'id': 11487, 'name': 'Kevin Friend', 'nationality': null },
+              { 'id': 11444, 'name': 'Matthew Wilkes', 'nationality': null },
+              { 'id': 11505, 'name': 'Derek Eaton', 'nationality': null },
+              { 'id': 11430, 'name': 'Simon Hooper', 'nationality': null }
+            ]
           },
           {
-            '_links': {
-              'self': {
-                'href': 'http://api.football-data.org/v1/fixtures/159046'
-              },
-              'competition': {
-                'href': 'http://api.football-data.org/v1/competitions/445'
-              },
-              'homeTeam': {
-                'href': 'http://api.football-data.org/v1/teams/1044'
-              },
-              'awayTeam': {
-                'href': 'http://api.football-data.org/v1/teams/67'
-              }
-            },
-            'date': '2018-02-24T15:00:00Z',
+            'id': 233194,
+            'season': { 'id': 151, 'startDate': '2018-08-10', 'endDate': '2019-05-12', 'currentMatchday': 19 },
+            'utcDate': '2018-12-22T15:00:00Z',
             'status': 'FINISHED',
-            'matchday': 28,
-            'homeTeamName': 'AFC Bournemouth',
-            'awayTeamName': 'Newcastle United FC',
-            'result': {
-              'goalsHomeTeam': 2,
-              'goalsAwayTeam': 2,
-              'halfTime': {
-                'goalsHomeTeam': 0,
-                'goalsAwayTeam': 2
-              }
+            'matchday': 18,
+            'stage': 'REGULAR_SEASON',
+            'group': 'Regular Season',
+            'lastUpdated': '2018-12-22T18:39:56Z',
+            'score': {
+              'winner': 'AWAY_TEAM',
+              'duration': 'REGULAR',
+              'fullTime': { 'homeTeam': 2, 'awayTeam': 3 },
+              'halfTime': { 'homeTeam': 1, 'awayTeam': 2 },
+              'extraTime': { 'homeTeam': null, 'awayTeam': null },
+              'penalties': { 'homeTeam': null, 'awayTeam': null }
             },
-            'odds': null
+            'homeTeam': { 'id': 65, 'name': 'Manchester City FC' },
+            'awayTeam': { 'id': 354, 'name': 'Crystal Palace FC' },
+            'referees': [
+              { 'id': 11610, 'name': 'Andre Marriner', 'nationality': null },
+              { 'id': 11611, 'name': 'Scott Ledger', 'nationality': null },
+              { 'id': 11570, 'name': 'Harry Lennard', 'nationality': null },
+              { 'id': 11580, 'name': 'Anthony Taylor', 'nationality': null }
+            ]
           },
           {
-            '_links': {
-              'self': {
-                'href': 'http://api.football-data.org/v1/fixtures/159048'
-              },
-              'competition': {
-                'href': 'http://api.football-data.org/v1/competitions/445'
-              },
-              'homeTeam': {
-                'href': 'http://api.football-data.org/v1/teams/397'
-              },
-              'awayTeam': {
-                'href': 'http://api.football-data.org/v1/teams/72'
-              }
-            },
-            'date': '2018-02-24T15:00:00Z',
+            'id': 233195,
+            'season': { 'id': 151, 'startDate': '2018-08-10', 'endDate': '2019-05-12', 'currentMatchday': 19 },
+            'utcDate': '2018-12-22T15:00:00Z',
             'status': 'FINISHED',
-            'matchday': 28,
-            'homeTeamName': 'Brighton & Hove Albion',
-            'awayTeamName': 'Swansea City FC',
-            'result': {
-              'goalsHomeTeam': 4,
-              'goalsAwayTeam': 1,
-              'halfTime': {
-                'goalsHomeTeam': 1,
-                'goalsAwayTeam': 0
-              }
+            'matchday': 18,
+            'stage': 'REGULAR_SEASON',
+            'group': 'Regular Season',
+            'lastUpdated': '2018-12-22T18:39:56Z',
+            'score': {
+              'winner': 'DRAW',
+              'duration': 'REGULAR',
+              'fullTime': { 'homeTeam': 0, 'awayTeam': 0 },
+              'halfTime': { 'homeTeam': 0, 'awayTeam': 0 },
+              'extraTime': { 'homeTeam': null, 'awayTeam': null },
+              'penalties': { 'homeTeam': null, 'awayTeam': null }
             },
-            'odds': null
+            'homeTeam': { 'id': 67, 'name': 'Newcastle United FC' },
+            'awayTeam': { 'id': 63, 'name': 'Fulham FC' },
+            'referees': [
+              { 'id': 11551, 'name': 'Martin Atkinson', 'nationality': null },
+              { 'id': 11547, 'name': 'Stephen Child', 'nationality': null },
+              { 'id': 11581, 'name': 'Gary Beswick', 'nationality': null },
+              { 'id': 11472, 'name': 'Jeremy Simpson', 'nationality': null }
+            ]
           },
           {
-            '_links': {
-              'self': {
-                'href': 'http://api.football-data.org/v1/fixtures/159052'
-              },
-              'competition': {
-                'href': 'http://api.football-data.org/v1/competitions/445'
-              },
-              'homeTeam': {
-                'href': 'http://api.football-data.org/v1/teams/64'
-              },
-              'awayTeam': {
-                'href': 'http://api.football-data.org/v1/teams/563'
-              }
-            },
-            'date': '2018-02-24T15:00:00Z',
+            'id': 233197,
+            'season': { 'id': 151, 'startDate': '2018-08-10', 'endDate': '2019-05-12', 'currentMatchday': 19 },
+            'utcDate': '2018-12-22T15:00:00Z',
             'status': 'FINISHED',
-            'matchday': 28,
-            'homeTeamName': 'Liverpool FC',
-            'awayTeamName': 'West Ham United FC',
-            'result': {
-              'goalsHomeTeam': 4,
-              'goalsAwayTeam': 1,
-              'halfTime': {
-                'goalsHomeTeam': 1,
-                'goalsAwayTeam': 0
-              }
+            'matchday': 18,
+            'stage': 'REGULAR_SEASON',
+            'group': 'Regular Season',
+            'lastUpdated': '2018-12-22T18:39:56Z',
+            'score': {
+              'winner': 'AWAY_TEAM',
+              'duration': 'REGULAR',
+              'fullTime': { 'homeTeam': 0, 'awayTeam': 1 },
+              'halfTime': { 'homeTeam': 0, 'awayTeam': 0 },
+              'extraTime': { 'homeTeam': null, 'awayTeam': null },
+              'penalties': { 'homeTeam': null, 'awayTeam': null }
             },
-            'odds': null
+            'homeTeam': { 'id': 61, 'name': 'Chelsea FC' },
+            'awayTeam': { 'id': 338, 'name': 'Leicester City FC' },
+            'referees': [
+              { 'id': 11436, 'name': 'Lee Probert', 'nationality': null },
+              { 'id': 11544, 'name': 'Simon Beck', 'nationality': null },
+              { 'id': 11595, 'name': 'Adrian Holmes', 'nationality': null },
+              { 'id': 11520, 'name': 'Paul Tierney', 'nationality': null }
+            ]
           },
           {
-            '_links': {
-              'self': {
-                'href': 'http://api.football-data.org/v1/fixtures/159049'
-              },
-              'competition': {
-                'href': 'http://api.football-data.org/v1/competitions/445'
-              },
-              'homeTeam': {
-                'href': 'http://api.football-data.org/v1/teams/328'
-              },
-              'awayTeam': {
-                'href': 'http://api.football-data.org/v1/teams/340'
-              }
-            },
-            'date': '2018-02-24T15:00:00Z',
+            'id': 233199,
+            'season': { 'id': 151, 'startDate': '2018-08-10', 'endDate': '2019-05-12', 'currentMatchday': 19 },
+            'utcDate': '2018-12-22T15:00:00Z',
             'status': 'FINISHED',
-            'matchday': 28,
-            'homeTeamName': 'Burnley FC',
-            'awayTeamName': 'Southampton FC',
-            'result': {
-              'goalsHomeTeam': 1,
-              'goalsAwayTeam': 1,
-              'halfTime': {
-                'goalsHomeTeam': 0,
-                'goalsAwayTeam': 0
-              }
+            'matchday': 18,
+            'stage': 'REGULAR_SEASON',
+            'group': 'Regular Season',
+            'lastUpdated': '2018-12-22T18:39:56Z',
+            'score': {
+              'winner': 'AWAY_TEAM',
+              'duration': 'REGULAR',
+              'fullTime': { 'homeTeam': 1, 'awayTeam': 3 },
+              'halfTime': { 'homeTeam': 0, 'awayTeam': 2 },
+              'extraTime': { 'homeTeam': null, 'awayTeam': null },
+              'penalties': { 'homeTeam': null, 'awayTeam': null }
             },
-            'odds': null
+            'homeTeam': { 'id': 394, 'name': 'Huddersfield Town AFC' },
+            'awayTeam': { 'id': 340, 'name': 'Southampton FC' },
+            'referees': [
+              { 'id': 11494, 'name': 'Stuart Attwell', 'nationality': null },
+              { 'id': 11495, 'name': 'Ian Hussin', 'nationality': null },
+              { 'id': 11568, 'name': 'Andrew Halliday', 'nationality': null },
+              { 'id': 11567, 'name': 'Jonathan Moss', 'nationality': null }
+            ]
           },
           {
-            '_links': {
-              'self': {
-                'href': 'http://api.football-data.org/v1/fixtures/159054'
-              },
-              'competition': {
-                'href': 'http://api.football-data.org/v1/competitions/445'
-              },
-              'homeTeam': {
-                'href': 'http://api.football-data.org/v1/teams/346'
-              },
-              'awayTeam': {
-                'href': 'http://api.football-data.org/v1/teams/62'
-              }
-            },
-            'date': '2018-02-24T17:30:00Z',
+            'id': 233201,
+            'season': { 'id': 151, 'startDate': '2018-08-10', 'endDate': '2019-05-12', 'currentMatchday': 19 },
+            'utcDate': '2018-12-22T15:00:00Z',
             'status': 'FINISHED',
-            'matchday': 28,
-            'homeTeamName': 'Watford FC',
-            'awayTeamName': 'Everton FC',
-            'result': {
-              'goalsHomeTeam': 1,
-              'goalsAwayTeam': 0,
-              'halfTime': {
-                'goalsHomeTeam': 0,
-                'goalsAwayTeam': 0
-              }
+            'matchday': 18,
+            'stage': 'REGULAR_SEASON',
+            'group': 'Regular Season',
+            'lastUpdated': '2018-12-22T18:39:56Z',
+            'score': {
+              'winner': 'AWAY_TEAM',
+              'duration': 'REGULAR',
+              'fullTime': { 'homeTeam': 0, 'awayTeam': 2 },
+              'halfTime': { 'homeTeam': 0, 'awayTeam': 1 },
+              'extraTime': { 'homeTeam': null, 'awayTeam': null },
+              'penalties': { 'homeTeam': null, 'awayTeam': null }
             },
-            'odds': null
+            'homeTeam': { 'id': 563, 'name': 'West Ham United FC' },
+            'awayTeam': { 'id': 346, 'name': 'Watford FC' },
+            'referees': [
+              { 'id': 11479, 'name': 'Lee Mason', 'nationality': null },
+              { 'id': 11480, 'name': 'Eddie Smart', 'nationality': null },
+              { 'id': 11531, 'name': 'Marc Perry', 'nationality': null },
+              { 'id': 11387, 'name': 'Andrew Davies', 'nationality': null }
+            ]
           },
           {
-            '_links': {
-              'self': {
-                'href': 'http://api.football-data.org/v1/fixtures/159050'
-              },
-              'competition': {
-                'href': 'http://api.football-data.org/v1/competitions/445'
-              },
-              'homeTeam': {
-                'href': 'http://api.football-data.org/v1/teams/354'
-              },
-              'awayTeam': {
-                'href': 'http://api.football-data.org/v1/teams/73'
-              }
-            },
-            'date': '2018-02-25T12:00:00Z',
+            'id': 233202,
+            'season': { 'id': 151, 'startDate': '2018-08-10', 'endDate': '2019-05-12', 'currentMatchday': 19 },
+            'utcDate': '2018-12-22T15:00:00Z',
             'status': 'FINISHED',
-            'matchday': 28,
-            'homeTeamName': 'Crystal Palace FC',
-            'awayTeamName': 'Tottenham Hotspur FC',
-            'result': {
-              'goalsHomeTeam': 0,
-              'goalsAwayTeam': 1,
-              'halfTime': {
-                'goalsHomeTeam': 0,
-                'goalsAwayTeam': 0
-              }
+            'matchday': 18,
+            'stage': 'REGULAR_SEASON',
+            'group': 'Regular Season',
+            'lastUpdated': '2018-12-22T18:39:56Z',
+            'score': {
+              'winner': 'HOME_TEAM',
+              'duration': 'REGULAR',
+              'fullTime': { 'homeTeam': 2, 'awayTeam': 0 },
+              'halfTime': { 'homeTeam': 1, 'awayTeam': 0 },
+              'extraTime': { 'homeTeam': null, 'awayTeam': null },
+              'penalties': { 'homeTeam': null, 'awayTeam': null }
             },
-            'odds': null
+            'homeTeam': { 'id': 1044, 'name': 'AFC Bournemouth' },
+            'awayTeam': { 'id': 397, 'name': 'Brighton & Hove Albion FC' },
+            'referees': [
+              { 'id': 11575, 'name': 'Mike Dean', 'nationality': null },
+              { 'id': 11576, 'name': 'Darren Cann', 'nationality': null },
+              { 'id': 11431, 'name': 'Daniel Robathan', 'nationality': null },
+              { 'id': 11503, 'name': 'Graham Scott', 'nationality': null }
+            ]
           },
           {
-            '_links': {
-              'self': {
-                'href': 'http://api.football-data.org/v1/fixtures/159053'
-              },
-              'competition': {
-                'href': 'http://api.football-data.org/v1/competitions/445'
-              },
-              'homeTeam': {
-                'href': 'http://api.football-data.org/v1/teams/66'
-              },
-              'awayTeam': {
-                'href': 'http://api.football-data.org/v1/teams/61'
-              }
-            },
-            'date': '2018-02-25T14:05:00Z',
+            'id': 233200,
+            'season': { 'id': 151, 'startDate': '2018-08-10', 'endDate': '2019-05-12', 'currentMatchday': 19 },
+            'utcDate': '2018-12-22T17:30:00Z',
             'status': 'FINISHED',
-            'matchday': 28,
-            'homeTeamName': 'Manchester United FC',
-            'awayTeamName': 'Chelsea FC',
-            'result': {
-              'goalsHomeTeam': 2,
-              'goalsAwayTeam': 1,
-              'halfTime': {
-                'goalsHomeTeam': 1,
-                'goalsAwayTeam': 1
-              }
+            'matchday': 18,
+            'stage': 'REGULAR_SEASON',
+            'group': 'Regular Season',
+            'lastUpdated': '2018-12-23T19:30:08Z',
+            'score': {
+              'winner': 'AWAY_TEAM',
+              'duration': 'REGULAR',
+              'fullTime': { 'homeTeam': 1, 'awayTeam': 5 },
+              'halfTime': { 'homeTeam': 1, 'awayTeam': 3 },
+              'extraTime': { 'homeTeam': null, 'awayTeam': null },
+              'penalties': { 'homeTeam': null, 'awayTeam': null }
             },
-            'odds': null
+            'homeTeam': { 'id': 715, 'name': 'Cardiff City FC' },
+            'awayTeam': { 'id': 66, 'name': 'Manchester United FC' },
+            'referees': [
+              { 'id': 11605, 'name': 'Michael Oliver', 'nationality': null },
+              { 'id': 11488, 'name': 'Simon Bennett', 'nationality': null },
+              { 'id': 11496, 'name': 'Mick McDonough', 'nationality': null },
+              { 'id': 11543, 'name': 'Roger East', 'nationality': null }
+            ]
           },
           {
-            '_links': {
-              'self': {
-                'href': 'http://api.football-data.org/v1/fixtures/159047'
-              },
-              'competition': {
-                'href': 'http://api.football-data.org/v1/competitions/445'
-              },
-              'homeTeam': {
-                'href': 'http://api.football-data.org/v1/teams/57'
-              },
-              'awayTeam': {
-                'href': 'http://api.football-data.org/v1/teams/65'
-              }
-            },
-            'date': '2018-03-01T19:45:00Z',
+            'id': 233198,
+            'season': { 'id': 151, 'startDate': '2018-08-10', 'endDate': '2019-05-12', 'currentMatchday': 19 },
+            'utcDate': '2018-12-23T16:00:00Z',
             'status': 'FINISHED',
-            'matchday': 28,
-            'homeTeamName': 'Arsenal FC',
-            'awayTeamName': 'Manchester City FC',
-            'result': {
-              'goalsHomeTeam': 0,
-              'goalsAwayTeam': 3,
-              'halfTime': {
-                'goalsHomeTeam': 0,
-                'goalsAwayTeam': 3
-              }
+            'matchday': 18,
+            'stage': 'REGULAR_SEASON',
+            'group': 'Regular Season',
+            'lastUpdated': '2018-12-24T00:45:00Z',
+            'score': {
+              'winner': 'AWAY_TEAM',
+              'duration': 'REGULAR',
+              'fullTime': { 'homeTeam': 2, 'awayTeam': 6 },
+              'halfTime': { 'homeTeam': 1, 'awayTeam': 3 },
+              'extraTime': { 'homeTeam': null, 'awayTeam': null },
+              'penalties': { 'homeTeam': null, 'awayTeam': null }
             },
-            'odds': null
+            'homeTeam': { 'id': 62, 'name': 'Everton FC' },
+            'awayTeam': { 'id': 73, 'name': 'Tottenham Hotspur FC' },
+            'referees': [
+              { 'id': 11520, 'name': 'Paul Tierney', 'nationality': null },
+              { 'id': 11615, 'name': 'Adam Nunn', 'nationality': null },
+              { 'id': 11606, 'name': 'Constantine Hatzidakis', 'nationality': null },
+              { 'id': 11443, 'name': 'Chris Kavanagh', 'nationality': null }
+            ]
           }
-        ]
+        ]    
       }
     });
 
-    FetchMock.mock('glob:https://api.football-data.org/v1/competitions/*', {
+    FetchMock.mock('glob:https://api.football-data.org/v2/competitions/**', {
       status: 200,
       body: {
         '_links': {
           'self': {
-            'href': 'http://api.football-data.org/v1/competitions/445'
+            'href': 'http://api.football-data.org/v2/competitions/2021'
           },
           'teams': {
-            'href': 'http://api.football-data.org/v1/competitions/445/teams'
+            'href': 'http://api.football-data.org/v2/competitions/2021/teams'
           },
           'fixtures': {
-            'href': 'http://api.football-data.org/v1/competitions/445/fixtures'
+            'href': 'http://api.football-data.org/v2/competitions/2021/matches'
           },
           'leagueTable': {
-            'href': 'http://api.football-data.org/v1/competitions/445/leagueTable'
+            'href': 'http://api.football-data.org/v2/competitions/2021/leagueTable'
           }
         },
-        'id': 445,
-        'caption': 'Premier League 2017/18',
+        'id': 2021,
+        'caption': 'Premier League 2018/19',
         'league': 'PL',
         'year': '2017',
         'currentMatchday': 30,
@@ -353,13 +308,13 @@ describe('Football Data API', () => {
   afterAll(FetchMock.restore);
 
   it('can get last weeks games', () => {
-    var data = new FootballAPI().getLastWeeksGames(445);
+    var data = new FootballAPI().getLastWeeksGames(2021);
     expect(data).toBeDefined();
   });
 
   it('can get correct scores', () => {
     new FootballAPI()
-      .getLastWeeksGames(445)
+      .getLastWeeksGames(2021)
       .then((data: ScoreModel[]) => {
         expect(data).toBeDefined();
         expect(data[0]).toBeDefined();
@@ -368,7 +323,7 @@ describe('Football Data API', () => {
   });
 
   it('can get this weeks games', () => {
-    var data = new FootballAPI().getThisWeeksGames(445);
+    var data = new FootballAPI().getThisWeeksGames(2021);
     expect(data).toBeDefined();
   });
 });

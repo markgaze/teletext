@@ -10,7 +10,7 @@ export default class Results extends React.Component<{}, ResultsState> {
     this.state = { games: [] };
   }
   componentWillMount() {
-    new FootballAPI().getLastWeeksGames(445).then(scores => this.setState({ games: scores }));
+    new FootballAPI().getLastWeeksGames(2021).then(scores => this.setState({ games: scores }));
   }
 
   render() {
