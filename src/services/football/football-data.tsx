@@ -1,4 +1,5 @@
 import ScoreModel from '../../components/score/score.model';
+import TableModel from '../../components/table/table.model';
 
 export default class FootballAPI {
   authToken: string = '6ef3af956d7f4c6e9db971d4fe244334';
@@ -12,6 +13,36 @@ export default class FootballAPI {
   getThisWeeksGames(compId: number): Promise<ScoreModel[]> {
     return this.getCompetitionData(compId)
       .then(comp => this.getGames(compId, comp.currentSeason.currentMatchday));
+  }
+
+  getStandings(compId: number): Promise<TableModel> {
+    return fetch(`${this.url}/competitions/${compId}/standings`, {
+      headers: {
+        'X-Auth-Token': this.authToken
+      }
+    })
+    .then(res => res.json())
+    .then((standings: StandingsData) => {
+      let teams = standings.standings[0].table.map(
+        (t: TableData) => {
+          return {
+            position: t.position,
+            teamName: t.team.name.replace(' FC', '').replace(' AFC', ''),
+            played: t.playedGames,
+            won: t.won,
+            drawn: t.draw,
+            lost: t.lost,
+            for: t.goalsFor,
+            against: t.goalsAgainst,
+            points: t.points
+          };
+        }
+      );
+      return {
+        lastUpdated: new Date(standings.competition.lastUpdated),
+        teams: teams
+      };
+    });
   }
 
   private getGames(compId: number, matchday: number): Promise<ScoreModel[]> {
@@ -83,4 +114,30 @@ interface ScoreData {
 interface ScorelineData {
   homeTeam: number;
   awayTeam: number;
+}
+
+interface StandingsData {
+  competition: CompetitionData;
+  standings: StandingData[];
+}
+
+interface CompetitionData {
+  lastUpdated: string;
+}
+
+interface StandingData {
+  table: TableData[];
+}
+
+interface TableData {
+  position: number;
+  team: TeamData;
+  playedGames: number;
+  won: number;
+  draw: number;
+  lost: number;
+  points: number;
+  goalsFor: number;
+  goalsAgainst: number;
+  goalDifference: number;
 }
