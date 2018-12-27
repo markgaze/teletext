@@ -33,7 +33,7 @@ export default class FootballAPI {
               kickoffTime: this.convertDateToKickoffTime(new Date(g.utcDate))
           };
         })
-        .sort((a: ScoreModel, b: ScoreModel) => a.homeTeam > b.homeTeam)
+        .sort((a: ScoreModel, b: ScoreModel) => a.homeTeam.localeCompare(b.homeTeam))
       )
       .catch(err => err);
   }
