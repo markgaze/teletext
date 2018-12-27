@@ -7,22 +7,27 @@ export default class Table extends React.Component<{}, TableState> {
   constructor(props: {}) {
     super(props);
     this.state = {
-      date: 'test',
-      rows: []
+      page: 1,
+      standings: {
+        lastUpdated: new Date(),
+        teams: []
+      }
     };
   }
 
   componentWillMount() {
     new FootballAPI().getStandings(2021).then(standings =>
       this.setState({
-        date: this.getDate(standings),
-        rows: this.getRows(standings)
+        page: 1,
+        standings: standings
       })
     );
+    setInterval(this.changePage.bind(this), 10000);
   }
 
   render() {
-    var rows = this.state.rows.map(r => (
+    let rowsData = this.getRows(this.state.standings);
+    var rows = rowsData.map(r => (
       <div key={r.position} className="table-row">
         <p className="right-align">{r.position}</p>
         <p>{r.teamName.substring(0, 18)}</p>
@@ -40,10 +45,10 @@ export default class Table extends React.Component<{}, TableState> {
       <div>
         <div className="title">
           <p className="green">ENGLISH PREMIER LEAGUE</p>
-          <p>1/2</p>
+          <p>{this.state.page}/2</p>
         </div>
         <div className="table-header">
-          <p>{this.state.date}</p>
+          <p>{this.getDate()}</p>
           <p>P</p>
           <p>W</p>
           <p>D</p>
@@ -57,19 +62,26 @@ export default class Table extends React.Component<{}, TableState> {
     );
   }
 
-  getDate(standings: TableModel) {
-    const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-      'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
-    ];
-    return `${monthNames[standings.lastUpdated.getMonth()]} ${standings.lastUpdated.getDate()}`;
+  private changePage(): void {
+    let _page = 1;
+    if (this.state.page === 1) {
+      _page = 2;
+    }
+    this.setState({ page: _page });
   }
 
-  getRows(standings: TableModel) {
-    return standings.teams.splice(0, 10);
+  private getDate(): string {
+    const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    return `${monthNames[this.state.standings.lastUpdated.getMonth()]} ${this.state.standings.lastUpdated.getDate()}`;
+  }
+
+  private getRows(standings: TableModel): TeamModel[] {
+    const half = standings.teams.length / 2;
+    return standings.teams.slice(half * (this.state.page - 1), half * this.state.page);
   }
 }
 
 interface TableState {
-  date: string;
-  rows: TeamModel[];
+  page: number;
+  standings: TableModel;
 }
