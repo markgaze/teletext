@@ -24,16 +24,16 @@ export default class FootballAPI {
       .then(games =>
         games.matches.map((g: GameData) => {
           return {
-              homeTeam: g.homeTeam.name.replace(' FC', ''),
+              homeTeam: g.homeTeam.name.replace(' FC', '').replace(' AFC', ''),
               homeTeamScore: g.score.fullTime.homeTeam,
               homeScorers: [],
-              awayTeam: g.awayTeam.name.replace(' FC', ''),
+              awayTeam: g.awayTeam.name.replace(' FC', '').replace(' AFC', ''),
               awayTeamScore: g.score.fullTime.awayTeam,
               awayScorers: [],
               kickoffTime: this.convertDateToKickoffTime(new Date(g.utcDate))
           };
         })
-        .sort((a: ScoreModel, b: ScoreModel) => a.homeTeam > b.homeTeam)
+        .sort((a: ScoreModel, b: ScoreModel) => a.homeTeam.localeCompare(b.homeTeam))
       )
       .catch(err => err);
   }
