@@ -1,20 +1,36 @@
 import * as React from 'react';
 import './table.css';
+import TableModel, { TeamModel } from './table.model';
+import FootballAPI from '../../services/football/football-data';
 
 export default class Table extends React.Component<{}, TableState> {
   constructor(props: {}) {
     super(props);
     this.state = {
-      date: this.getDate(),
-      rows: this.getRows()
+      page: 1,
+      standings: {
+        lastUpdated: new Date(),
+        teams: []
+      }
     };
   }
 
+  componentWillMount() {
+    new FootballAPI().getStandings(2021).then(standings =>
+      this.setState({
+        page: 1,
+        standings: standings
+      })
+    );
+    setInterval(this.changePage.bind(this), 10000);
+  }
+
   render() {
-    var rows = this.state.rows.map(r => (
-      <div key="r.position" className="table-row">
+    let rowsData = this.getRows(this.state.standings);
+    var rows = rowsData.map(r => (
+      <div key={r.position} className="table-row">
         <p className="right-align">{r.position}</p>
-        <p>{r.teamName}</p>
+        <p>{r.teamName.substring(0, 18)}</p>
         <p>{r.played}</p>
         <p>{r.won}</p>
         <p>{r.drawn}</p>
@@ -29,10 +45,10 @@ export default class Table extends React.Component<{}, TableState> {
       <div>
         <div className="title">
           <p className="green">ENGLISH PREMIER LEAGUE</p>
-          <p>1/2</p>
+          <p>{this.state.page}/2</p>
         </div>
         <div className="table-header">
-          <p>{this.state.date}</p>
+          <p>{this.getDate()}</p>
           <p>P</p>
           <p>W</p>
           <p>D</p>
@@ -46,139 +62,26 @@ export default class Table extends React.Component<{}, TableState> {
     );
   }
 
-  getDate() {
-    return 'Aug 13';
+  private changePage(): void {
+    let _page = 1;
+    if (this.state.page === 1) {
+      _page = 2;
+    }
+    this.setState({ page: _page });
   }
 
-  getRows() {
-    return [
-      {
-        position: 1,
-        teamName: 'Man Utd',
-        played: 1,
-        won: 1,
-        drawn: 0,
-        lost: 0,
-        for: 2,
-        against: 0,
-        points: 3
-      },
-      {
-        position: 2,
-        teamName: 'Arsenal',
-        played: 0,
-        won: 0,
-        drawn: 0,
-        lost: 0,
-        for: 0,
-        against: 0,
-        points: 0
-      },
-      {
-        position: 3,
-        teamName: 'Aston Villa',
-        played: 0,
-        won: 0,
-        drawn: 0,
-        lost: 0,
-        for: 0,
-        against: 0,
-        points: 0
-      },
-      {
-        position: 4,
-        teamName: 'Birmingham',
-        played: 0,
-        won: 0,
-        drawn: 0,
-        lost: 0,
-        for: 0,
-        against: 0,
-        points: 0
-      },
-      {
-        position: 5,
-        teamName: 'Blackburn',
-        played: 0,
-        won: 0,
-        drawn: 0,
-        lost: 0,
-        for: 0,
-        against: 0,
-        points: 0
-      },
-      {
-        position: 6,
-        teamName: 'Bolton',
-        played: 0,
-        won: 0,
-        drawn: 0,
-        lost: 0,
-        for: 0,
-        against: 0,
-        points: 0
-      },
-      {
-        position: 7,
-        teamName: 'Charlton',
-        played: 0,
-        won: 0,
-        drawn: 0,
-        lost: 0,
-        for: 0,
-        against: 0,
-        points: 0
-      },
-      {
-        position: 8,
-        teamName: 'Chelsea',
-        played: 0,
-        won: 0,
-        drawn: 0,
-        lost: 0,
-        for: 0,
-        against: 0,
-        points: 0
-      },
-      {
-        position: 9,
-        teamName: 'Fulham',
-        played: 0,
-        won: 0,
-        drawn: 0,
-        lost: 0,
-        for: 0,
-        against: 0,
-        points: 0
-      },
-      {
-        position: 10,
-        teamName: 'Liverpool',
-        played: 0,
-        won: 0,
-        drawn: 0,
-        lost: 0,
-        for: 0,
-        against: 0,
-        points: 0
-      },
-    ];
+  private getDate(): string {
+    const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    return `${monthNames[this.state.standings.lastUpdated.getMonth()]} ${this.state.standings.lastUpdated.getDate()}`;
+  }
+
+  private getRows(standings: TableModel): TeamModel[] {
+    const half = standings.teams.length / 2;
+    return standings.teams.slice(half * (this.state.page - 1), half * this.state.page);
   }
 }
 
 interface TableState {
-  date: string;
-  rows: TableRow[];
-}
-
-interface TableRow {
-  position: number;
-  teamName: string;
-  played: number;
-  won: number;
-  drawn: number;
-  lost: number;
-  for: number;
-  against: number;
-  points: number;
+  page: number;
+  standings: TableModel;
 }
