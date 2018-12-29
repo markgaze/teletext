@@ -61,8 +61,7 @@ export default class FootballAPI {
         };
       })
         .sort((a: ScoreModel, b: ScoreModel) => a.homeTeam.localeCompare(b.homeTeam));
-    }
-    catch (err) {
+    } catch (err) {
       return err;
     }
   }
@@ -112,19 +111,6 @@ interface ScoreData {
 interface ScorelineData {
   homeTeam: number;
   awayTeam: number;
-}
-
-interface StandingsData {
-  competition: CompetitionData;
-  standings: StandingData[];
-}
-
-interface CompetitionData {
-  lastUpdated: string;
-}
-
-interface StandingData {
-  table: TableData[];
 }
 
 interface TableData {
