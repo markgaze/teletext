@@ -276,35 +276,6 @@ describe('Football Data API', () => {
       }
     });
 
-    FetchMock.mock('glob:https://api.football-data.org/v2/competitions/*', {
-      status: 200,
-      body: {
-        '_links': {
-          'self': {
-            'href': 'http://api.football-data.org/v2/competitions/2021'
-          },
-          'teams': {
-            'href': 'http://api.football-data.org/v2/competitions/2021/teams'
-          },
-          'fixtures': {
-            'href': 'http://api.football-data.org/v2/competitions/2021/matches'
-          },
-          'leagueTable': {
-            'href': 'http://api.football-data.org/v2/competitions/2021/leagueTable'
-          }
-        },
-        'id': 2021,
-        'caption': 'Premier League 2018/19',
-        'league': 'PL',
-        'year': '2018',
-        'currentMatchday': 30,
-        'numberOfMatchdays': 38,
-        'numberOfTeams': 20,
-        'numberOfGames': 380,
-        'lastUpdated': '2018-03-08T11:00:01Z'
-      }
-    });
-
     FetchMock.mock('glob:https://api.football-data.org/v2/competitions/*/standings', {
       status: 200,
       body: {
@@ -1312,6 +1283,30 @@ describe('Football Data API', () => {
               ]
           }
         ]
+      }
+    });
+
+    FetchMock.mock('glob:https://api.football-data.org/v2/competitions/*', {
+      status: 200,
+      body: {
+        'id': 2021,
+        'area': {
+        'id': 2072,
+        'name': 'England'
+        },
+        'name': 'Premier League',
+        'code': 'PL',
+        'emblemUrl': null,
+        'plan': 'TIER_ONE',
+        'currentSeason': {
+        'id': 151,
+        'startDate': '2018-08-10',
+        'endDate': '2019-05-12',
+        'currentMatchday': 20,
+        'winner': null
+        },
+        'numberOfAvailableSeasons': 26,
+        'lastUpdated': '2018-12-29T21:09:48Z'
       }
     });
   });
