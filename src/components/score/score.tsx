@@ -5,7 +5,9 @@ import ScoreModel from './score.model';
 export default class Score extends React.Component<ScoreProps, ScoreState> {
   constructor(props: ScoreProps) {
     super(props);
-    this.state = props;
+    this.state = {
+      scoreData: this.props.scoreData
+    };
   }
 
   render() {
