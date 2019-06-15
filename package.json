@@ -18,12 +18,17 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "coverage": "react-scripts test --env=jsdom --coverage --testResultsProcessor=jest-junit",
+    "coverage": "react-scripts test --env=jsdom --coverage --watchAll=false",
     "codecov": "codecov",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"
+  },
+  "jest": {
+    "coverageReporters": [
+      "jest-junit"
+    ]
   },
   "jest-junit": {
     "suiteName": "jest tests",
