@@ -3,31 +3,32 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@types/react-router-dom": "^4.3.1",
-    "react": "^16.7.0",
-    "react-dom": "^16.7.0",
-    "react-router-dom": "^4.3.1",
-    "react-scripts-ts": "^4.0.8"
+    "@types/jest": "24.0.14",
+    "@types/node": "12.0.8",
+    "@types/react": "16.8.20",
+    "@types/react-dom": "16.8.4",
+    "@types/react-router-dom": "^4.3.4",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-router-dom": "^5.0.1",
+    "react-scripts": "3.0.1",
+    "typescript": "3.5.2"
   },
   "scripts": {
-    "start": "react-scripts-ts start",
-    "build": "react-scripts-ts build",
-    "test": "react-scripts-ts test --env=jsdom",
-    "coverage": "react-scripts-ts test --env=jsdom --coverage --testResultsProcessor=jest-junit",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "coverage": "react-scripts test --env=jsdom --coverage --watchAll=false",
     "codecov": "codecov",
-    "eject": "react-scripts-ts eject"
+    "eject": "react-scripts eject"
   },
-  "devDependencies": {
-    "@types/fetch-mock": "^7.2.0",
-    "@types/jest": "^23.3.10",
-    "@types/node": "^10.12.18",
-    "@types/react": "^16.7.18",
-    "@types/react-dom": "^16.0.11",
-    "codecov": "^3.1.0",
-    "fetch-mock": "^7.2.7",
-    "jest-junit": "^5.2.0",
-    "node-fetch": "^2.3.0",
-    "typescript": "^3.2.2"
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "jest": {
+    "coverageReporters": [
+      "jest-junit"
+    ]
   },
   "jest-junit": {
     "suiteName": "jest tests",
@@ -37,19 +38,23 @@
     "ancestorSeparator": " › ",
     "usePathForSuiteName": "true"
   },
-  "now": {
-    "alias": [
-      "teletext",
-      "teletext-beta"
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
     ],
-    "type": "npm",
-    "public": true,
-    "name": "teletext"
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ]
+  "devDependencies": {
+    "@types/fetch-mock": "^7.3.0",
+    "codecov": "^3.5.0",
+    "fetch-mock": "^7.3.3",
+    "jest-junit": "^6.4.0",
+    "node-fetch": "^2.6.0"
+  }
 }

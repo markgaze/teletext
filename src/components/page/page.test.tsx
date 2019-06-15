@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import * as FetchMock from 'fetch-mock';
+import FetchMock from 'fetch-mock';
 import Page from './page';
 import { MemoryRouter } from 'react-router';
 

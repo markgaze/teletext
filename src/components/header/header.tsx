@@ -2,9 +2,9 @@ import * as React from 'react';
 import './header.css';
 
 export default class Header extends React.Component<HeaderProps, HeaderState> {
-  dayOfWeek: string[] = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-  monthName: string[] = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-  intervalId: NodeJS.Timer;
+  private readonly dayOfWeek: string[] = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  private readonly monthName: string[] = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  private intervalId: NodeJS.Timer;
 
   constructor(props: HeaderProps) {
     super(props);
@@ -13,6 +13,7 @@ export default class Header extends React.Component<HeaderProps, HeaderState> {
       date: '',
       time: ''
     };
+    this.intervalId = setInterval(() => this.updateClock(), 1000);
   }
 
   render() {
@@ -29,7 +30,6 @@ export default class Header extends React.Component<HeaderProps, HeaderState> {
 
   componentDidMount() {
     this.updateClock();
-    this.intervalId = setInterval(() => this.updateClock(), 1000);
   }
 
   componentWillUnmount() {

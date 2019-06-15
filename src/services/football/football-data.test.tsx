@@ -1,5 +1,5 @@
 import FootballAPI from './football-data';
-import * as FetchMock from 'fetch-mock';
+import FetchMock from 'fetch-mock';
 import ScoreModel from '../../components/score/score.model';
 import TableModel from '../../components/table/table.model';
 
