@@ -49,6 +49,7 @@
     "@types/fetch-mock": "^7.3.0",
     "codecov": "^3.5.0",
     "fetch-mock": "^7.3.3",
+    "jest-junit": "^6.4.0",
     "node-fetch": "^2.6.0"
   }
 }
