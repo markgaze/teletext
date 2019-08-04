@@ -32,13 +32,6 @@ jobs:
           paths: .
 workflows:
   version: 2
-  test_build_deploy:
+  test_build:
     jobs:
       - build
-      - deployment:
-          requires:
-            - build
-          filters:
-            branches:
-              only:
-                - master
