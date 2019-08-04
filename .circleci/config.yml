@@ -30,17 +30,6 @@ jobs:
       - persist_to_workspace:
           root: .
           paths: .
-  deployment:
-    docker:
-      - image: 'circleci/node:latest'
-    working_directory: ~/repo
-    steps:
-      - attach_workspace:
-          at: ~/repo
-      - run: sudo npm install -g --unsafe-perm now
-      - deploy:
-          name: Deploy & Alias
-          command: now -t ${NOW_TOKEN} && now alias -t ${NOW_TOKEN} teletext-beta
 workflows:
   version: 2
   test_build_deploy:
