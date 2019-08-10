@@ -1,7 +1,7 @@
 .score {
   display: grid;
   grid-template-columns: 1fr 0.5fr 1fr 50px;
-  padding-bottom: 30px;
+  padding-bottom: 60px;
 }
 
 .scoreline {
