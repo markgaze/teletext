@@ -21,15 +21,16 @@ export default class Results extends React.Component<{}, ResultsState> {
   }
 
   render() {
-    var games = this.getGames(this.state.games).map(score => 
-      <Score key={score.homeTeam} scoreData={score} />
-    );
+    var games = this.getGames(this.state.games).map(score => <Score key={score.homeTeam} scoreData={score} />);
 
     return (
-        <div className="results">
-          <p className="green">CHAMPIONSHIP RESULTS</p>
-            {games}
+      <div className="results">
+        <div className="title">
+          <p className="green">SKYBET CHAMPIONSHIP</p>
+          <p>{this.state.page}/2</p>
         </div>
+        {games}
+      </div>
     );
   }
 
