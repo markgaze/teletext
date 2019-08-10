@@ -16,7 +16,7 @@ export default class Table extends React.Component<{}, TableState> {
   }
 
   componentWillMount() {
-    new FootballAPI().getStandings(2021).then(standings =>
+    new FootballAPI().getStandings(2016).then(standings =>
       this.setState({
         page: 1,
         standings: standings
@@ -44,7 +44,7 @@ export default class Table extends React.Component<{}, TableState> {
     return (
       <div>
         <div className="title">
-          <p className="green">ENGLISH PREMIER LEAGUE</p>
+          <p className="green">SKYBET CHAMPIONSHIP</p>
           <p>{this.state.page}/2</p>
         </div>
         <div className="table-header">
