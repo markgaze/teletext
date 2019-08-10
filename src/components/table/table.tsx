@@ -16,7 +16,7 @@ export default class Table extends React.Component<{}, TableState> {
   }
 
   componentWillMount() {
-    new FootballAPI().getStandings(2021).then(standings =>
+    new FootballAPI().getStandings(2016).then(standings =>
       this.setState({
         page: 1,
         standings: standings
@@ -30,7 +30,7 @@ export default class Table extends React.Component<{}, TableState> {
     var rows = rowsData.map(r => (
       <div key={r.position} className="table-row">
         <p className="right-align">{r.position}</p>
-        <p>{r.teamName.substring(0, 18)}</p>
+        <p>{r.teamName.substring(0, 19)}</p>
         <p>{r.played}</p>
         <p>{r.won}</p>
         <p>{r.drawn}</p>
@@ -44,7 +44,7 @@ export default class Table extends React.Component<{}, TableState> {
     return (
       <div>
         <div className="title">
-          <p className="green">ENGLISH PREMIER LEAGUE</p>
+          <p className="green">SKYBET CHAMPIONSHIP</p>
           <p>{this.state.page}/2</p>
         </div>
         <div className="table-header">
