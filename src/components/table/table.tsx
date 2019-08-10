@@ -30,7 +30,7 @@ export default class Table extends React.Component<{}, TableState> {
     var rows = rowsData.map(r => (
       <div key={r.position} className="table-row">
         <p className="right-align">{r.position}</p>
-        <p>{r.teamName.substring(0, 18)}</p>
+        <p>{r.teamName.substring(0, 19)}</p>
         <p>{r.played}</p>
         <p>{r.won}</p>
         <p>{r.drawn}</p>
