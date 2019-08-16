@@ -3,7 +3,7 @@
 CI Status:
 [![CircleCI](https://circleci.com/gh/markgaze/teletext.svg?style=svg)](https://circleci.com/gh/markgaze/teletext)
 
-Code Coverage: [![codecov](https://codecov.io/gh/MarkGaze/teletext/branch/master/graph/badge.svg)](https://codecov.io/gh/MarkGaze/teletext)
+Code Coverage: [![codecov](https://codecov.io/gh/markgaze/teletext/branch/master/graph/badge.svg)](https://codecov.io/gh/markgaze/teletext)
 
 A nostalgic emulation of the teletext football scores page
 
@@ -11,7 +11,7 @@ Font and lots of other useful information/tools from [Galax Teletext](http://www
 
 ## Demos
 
-You can see a demo of the site at the following link: [Teletext](https://teletext.netlify.com)
+You can see a demo of the site at the following link: [Teletext](https://teletext.markgaze.dev)
 
 ## Build
 
