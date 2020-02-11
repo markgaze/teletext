@@ -8,7 +8,7 @@
     "@types/react": "16.8.20",
     "@types/react-dom": "16.8.4",
     "@types/react-router-dom": "^4.3.4",
-    "react": "^16.8.6",
+    "react": "^16.12.0",
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.1",
