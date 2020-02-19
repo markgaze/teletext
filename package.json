@@ -52,7 +52,7 @@
   },
   "devDependencies": {
     "@types/fetch-mock": "^7.3.0",
-    "codecov": "^3.5.0",
+    "codecov": "^3.6.5",
     "fetch-mock": "^8.3.2",
     "jest-junit": "^6.4.0",
     "node-fetch": "^2.6.0"
