@@ -1,6 +1,6 @@
 {
-  "name": "TODO",
-  "description": "TODO",
+  "name": "teletext",
+  "description": "A nostalgic recreation of the Ceefax system",
   "version": "0.0.1",
   "scripts": {
     "dev": "sapper dev",
