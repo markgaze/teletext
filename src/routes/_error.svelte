@@ -8,6 +8,9 @@
 </script>
 
 <style>
+	pre {
+		font-size: 0.625rem;
+	}
 </style>
 
 <svelte:head>
