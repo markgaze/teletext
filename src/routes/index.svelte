@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Header from "../components/Header.svelte";
+	import Banner from "../components/Banner.svelte";
 </script>
 
 <style>
@@ -11,4 +12,5 @@
 
 <div class="teletext">
 	<Header pageNumber={100}/>
+	<Banner />
 </div>

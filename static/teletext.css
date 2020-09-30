@@ -6,11 +6,83 @@
 */
 
 /* Hard reset */
-html,body,div,span,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,
-address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,
-sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,
-tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,
-footer,header,hgroup,menu,nav,output,section,summary,time,audio,video {
+html,
+body,
+div,
+span,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+section,
+summary,
+time,
+audio,
+video {
   padding: 0;
   margin: 0;
   border: 0;
@@ -30,94 +102,171 @@ footer,header,hgroup,menu,nav,output,section,summary,time,audio,video {
     ffffff 7 white
 */
 
-
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 /* unvisited link */
 a:link {
-    color: #00ffff;
+  color: #00ffff;
 }
 
 /* visited link */
 a:visited {
-    color: #00ff00;
+  color: #00ff00;
 }
 
 /* mouse over link */
 a:hover {
-    color: #ffff00;
+  color: #ffff00;
 }
-a.yellow:hover, .yellow a:hover {
-    color: #00ff00;
+a.yellow:hover,
+.yellow a:hover {
+  color: #00ff00;
 }
 
 /* selected link */
 a:active {
-    color: #ff0000;
+  color: #ff0000;
 }
-a.yellow:active, .yellow a:active {
-    color: #ff0000;
+a.yellow:active,
+.yellow a:active {
+  color: #ff0000;
 }
-a.red:active, .red a:active {
-    color: #ffff00;
+a.red:active,
+.red a:active {
+  color: #ffff00;
 }
 
 /* flashing class, it's like the 'blink' tag is back */
 .flashing {
-    animation: flashing 1.3s steps(5, start) infinite;
-    -webkit-animation: flashing 1.3s steps(5, start) infinite;
+  animation: flashing 1.3s steps(5, start) infinite;
+  -webkit-animation: flashing 1.3s steps(5, start) infinite;
 }
-@keyframes flashing { to { visibility: hidden; } }
-@-webkit-keyframes flashing { to { visibility: hidden; } }
+@keyframes flashing {
+  to {
+    visibility: hidden;
+  }
+}
+@-webkit-keyframes flashing {
+  to {
+    visibility: hidden;
+  }
+}
 
 /* concealed text is initially hidden, reveal by modifying class */
-.conceal { opacity: 0; }
-
-.colour0, .black,   a.black,   .black a    {color: #000000;}
-.colour1, .red,     a.red,     .red  a       {color: #ff0000;}
-.colour2, .green,   a.green,   .green  a   {color: #00ff00;}
-.colour3, .yellow,  a.yellow,  .yellow a  {color: #ffff00;}
-.colour4, .blue,    a.blue,    .blue a      {color: #0000ff;}
-.colour5, .magenta, a.magenta, .magenta a{color: #ff00ff;}
-.colour6, .cyan,    a.cyan,    .cyan  a     {color: #00ffff;}
-.colour7, .white,   a.white,   .white  a   {color: #ffffff;}
-
-.colour0bg, .blackbg     {background-color: #000000;}
-.colour1bg, .redbg         {background-color: #ff0000;}
-.colour2bg, .greenbg     {background-color: #00ff00;}
-.colour3bg, .yellowbg   {background-color: #ffff00;}
-.colour4bg, .bluebg       {background-color: #0000ff;}
-.colour5bg, .magentabg {background-color: #ff00ff;}
-.colour6bg, .cyanbg       {background-color: #00ffff;}
-.colour7bg, .whitebg     {background-color: #ffffff;}
-
-@font-face {
-    font-family: Mode7;
-    src: url('MODE7GX3.TTF'), url('MODE7GX3.EOT');  /* .EOT is for IE */
+.conceal {
+  opacity: 0;
 }
 
-body, td.teletext {
-    font-family: Mode7, monospace, courier, fixed;
-    font-size: 20px;
-    font-smooth: never;
-    -webkit-font-smoothing : none;
-    color: #ffffff;
-    background: #000000;
-    line-height: 20px;
+.colour0,
+.black,
+a.black,
+.black a {
+  color: #000000;
+}
+.colour1,
+.red,
+a.red,
+.red a {
+  color: #ff0000;
+}
+.colour2,
+.green,
+a.green,
+.green a {
+  color: #00ff00;
+}
+.colour3,
+.yellow,
+a.yellow,
+.yellow a {
+  color: #ffff00;
+}
+.colour4,
+.blue,
+a.blue,
+.blue a {
+  color: #0000ff;
+}
+.colour5,
+.magenta,
+a.magenta,
+.magenta a {
+  color: #ff00ff;
+}
+.colour6,
+.cyan,
+a.cyan,
+.cyan a {
+  color: #00ffff;
+}
+.colour7,
+.white,
+a.white,
+.white a {
+  color: #ffffff;
+}
+
+.colour0bg,
+.blackbg {
+  background-color: #000000;
+}
+.colour1bg,
+.redbg {
+  background-color: #ff0000;
+}
+.colour2bg,
+.greenbg {
+  background-color: #00ff00;
+}
+.colour3bg,
+.yellowbg {
+  background-color: #ffff00;
+}
+.colour4bg,
+.bluebg {
+  background-color: #0000ff;
+}
+.colour5bg,
+.magentabg {
+  background-color: #ff00ff;
+}
+.colour6bg,
+.cyanbg {
+  background-color: #00ffff;
+}
+.colour7bg,
+.whitebg {
+  background-color: #ffffff;
+}
+
+@font-face {
+  font-family: Mode7;
+  src: url("MODE7GX3.TTF"), url("MODE7GX3.EOT"); /* .EOT is for IE */
+}
+
+body,
+td.teletext {
+  font-family: Mode7, monospace, courier, fixed;
+  font-size: 20px;
+  font-smooth: never;
+  -webkit-font-smoothing: none;
+  color: #ffffff;
+  background: #000000;
+  line-height: 20px;
 }
 
 body {
-    border-width: 20px 20px 20px 20px; /* t r b l */
-    padding: 20px;
+  border-width: 20px 20px 20px 20px; /* t r b l */
+  padding: 20px;
 }
 
 .teletext {
-    text-align: left;
-    white-space: pre;
-    display: block;
-    font-size: 20px;
-    font-smooth: never;
-    -webkit-font-smoothing : none;
+  text-align: left;
+  white-space: pre;
+  display: block;
+  font-size: 20px;
+  font-smooth: never;
+  -webkit-font-smoothing: none;
 }
