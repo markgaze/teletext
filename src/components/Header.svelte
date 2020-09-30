@@ -8,7 +8,7 @@
 
   const setDateTime = () => {
     date = dayjs().format('ddd DD MMM');
-    time = dayjs().format('hh:mm/ss');
+    time = dayjs().format('HH:mm/ss');
   };
 
   setDateTime();
