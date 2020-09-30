@@ -1,4 +1,5 @@
-body {
-	background-color: black;
-	color: white;
+.teletext {
+  margin: auto;
+  max-height: calc(24 * 20px);
+  max-width: calc(40 * 20px);
 }
