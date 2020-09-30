@@ -18,16 +18,16 @@
 </script>
 
 <style>
-  .header {
+  header {
     display: flex;
     justify-content: space-around;
   }
 </style>
 
-<div class="header">
+<header>
   <span class="white">P{pageNumber}</span>
   <span class="white">CEEFAX 1</span>
   <span class="white">{pageNumber}</span>
   <span class="white">{date}</span>
   <span class="yellow">{time}</span>
-</div>
+</header>
