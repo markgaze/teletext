@@ -1,4 +1,6 @@
 <script lang="ts">
+	import DoubleText from "../components/DoubleText.svelte";
+
 	export let status: number;
 	export let error: Error;
 
@@ -9,13 +11,15 @@
 </style>
 
 <svelte:head>
-	<title>{status}</title>
+	<title>Error: {status}</title>
 </svelte:head>
 
-<h1>{status}</h1>
 
-<p>{error.message}</p>
-
-{#if dev && error.stack}
-	<pre>{error.stack}</pre>
-{/if}
+<div className="error">
+	<DoubleText text={`${status}`} />
+	<p className="link">Go back to page <a href="/" className="yellow">100</a></p>
+	{#if dev && error.stack}
+		<p>{error.message}</p>
+		<pre>{error.stack}</pre>
+	{/if}
+</div>

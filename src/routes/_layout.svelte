@@ -3,23 +3,30 @@
   import Footer from "../components/Footer.svelte";
   import Header from "../components/Header.svelte";
 
-  export let pageNumber: number = 100;
+	export let segment: string;
+	$: console.log(segment);
+  let pageNumber: number = 100;
 </script>
 
 <style>
-  .page {
+	.teletext {
+		height: 100vh;
+		width: 100vw;
+	}
+	
+	.page {
     display: flex;
     flex-direction: column;
 		gap: 0.5rem;
-		height: 30rem;
+		margin: auto;
+		min-height: 30rem;
 		width: 40rem;
 	}
-	
-	.teletext {
-		display: grid;
-		height: 100vh;
-		place-items: center;
-		width: 100vw;
+
+	main {
+		display: flex;
+		flex-direction: column;
+		height: 25rem;
 	}
 </style>
 
