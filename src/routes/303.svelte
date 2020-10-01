@@ -30,24 +30,22 @@
               awayTeam: g.awayTeam.name.replace(' FC', '').replace(' AFC', ''),
               awayTeamScore: g.score.fullTime.awayTeam,
               awayScorers: [],
-              kickoffTime: convertDateToKickoffTime(g.utcDate)
+              kickoffTime: g.utcDate,
             };
           })
-          .sort((a: IScore, b: IScore) => a.homeTeam.localeCompare(b.homeTeam)),
+          .sort((a: IScore, b: IScore) => {
+            if (dayjs(a.kickoffTime).isBefore(b.kickoffTime, "day")) {
+              return -1;
+            }
+
+            if (dayjs(a.kickoffTime).isAfter(b.kickoffTime, "day")) {
+              return 1;
+            } 
+            
+            return a.homeTeam.localeCompare(b.homeTeam)
+          }),
         competitionName,
     };
-  }
-
-  const convertDateToKickoffTime = (gameDate: string): string => {
-    const now = dayjs();
-    const date = dayjs(gameDate);
-    if (date.isBefore(now)) {
-      return '';
-    } else if (date.isAfter(now)) {
-      return date.format("ddd");
-    } else {
-      return date.format("HH:MM");
-    }
   }
 </script>
 
@@ -66,6 +64,18 @@
   const interval = setInterval(() => page = (page === 1 ? 2 : 1), 10000);
 
   onDestroy(() => clearInterval(interval));
+
+  const convertDateToKickoffTime = (gameDate: string): string => {
+    const now = dayjs();
+    const date = dayjs(gameDate);
+    if (date.isBefore(now)) {
+      return '';
+    } else if (date.isAfter(now)) {
+      return date.format("ddd");
+    } else {
+      return date.format("HH:MM");
+    }
+  }
 </script>
 
 <style>
@@ -116,7 +126,7 @@
         game.awayTeamScore !== null ? game.awayTeamScore: ""
       }</p>
       <p class="cyan team">{game.awayTeam.toUpperCase()}</p>
-      <p class="kickoff">{game.kickoffTime}</p>
+      <p class="kickoff">{convertDateToKickoffTime(game.kickoffTime)}</p>
     </div>
     {/each}
   </div>
