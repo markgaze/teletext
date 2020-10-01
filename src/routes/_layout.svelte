@@ -3,9 +3,12 @@
   import Footer from "../components/Footer.svelte";
   import Header from "../components/Header.svelte";
 
-	export let segment: string;
-	$: console.log(segment);
-  let pageNumber: number = 100;
+	import { stores } from '@sapper/app';
+	const { page } = stores();
+	let pageNumber: number = 100;
+	
+
+	$: pageNumber = +($page.path.replace('/', ''));
 </script>
 
 <style>
