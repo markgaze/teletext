@@ -1,6 +1,6 @@
 <script lang="ts">
-	import DoubleText from "../DoubleText.svelte";
-	import Option from "../Option.svelte";
+	import DoubleText from "../components/DoubleText.svelte";
+	import Option from "../components/Option.svelte";
 </script>
 
 <style>
