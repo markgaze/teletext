@@ -125,19 +125,6 @@ a.yellow:hover,
   color: #ffff00;
 }
 
-/* selected link */
-a:active {
-  color: #ff0000;
-}
-a.yellow:active,
-.yellow a:active {
-  color: #ff0000;
-}
-a.red:active,
-.red a:active {
-  color: #ffff00;
-}
-
 /* flashing class, it's like the 'blink' tag is back */
 .flashing {
   animation: flashing 1.3s steps(5, start) infinite;
