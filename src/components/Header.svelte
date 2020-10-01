@@ -3,16 +3,14 @@
   import { onDestroy } from 'svelte';
 
   export let pageNumber: number;
+  let day: dayjs.Dayjs = dayjs();
   let date: string;
   let time: string;
 
-  const setDateTime = () => {
-    date = dayjs().format('ddd DD MMM');
-    time = dayjs().format('HH:mm/ss');
-  };
+  $: date = day.format('ddd DD MMM');
+  $: time = day.format('HH:mm/ss');
 
-  setDateTime();
-  const interval = setInterval(setDateTime, 1000);
+  const interval = setInterval(() => day = dayjs(), 1000);
 
   onDestroy(() => clearInterval(interval));
 </script>
