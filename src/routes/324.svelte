@@ -63,7 +63,7 @@
     retval += `${names[0]} `;
     names = names.slice(1);
     names.forEach(n => {
-      retval += n.substring(0, 1) + " ";
+      retval += n.substring(0, 1);
     });
 
     return retval;
