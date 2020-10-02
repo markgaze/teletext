@@ -30,13 +30,6 @@
 		height: 1rem;
 	}
 
-	hr.blue {
-		border-color: blue;
-		margin-bottom: 7px;
-		margin-top: 7px;
-		width: 100%;
-	}
-
 	.headline {
 		display: flex;
 		flex-direction: column;

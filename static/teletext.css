@@ -257,3 +257,19 @@ body {
   font-smooth: never;
   -webkit-font-smoothing: none;
 }
+
+/* Extra stuff from me */
+
+hr {
+  margin-bottom: 7px;
+  margin-top: 7px;
+  width: 100%;
+}
+
+hr.blue {
+  border-color: blue;
+}
+
+hr.green {
+  border-color: green;
+}

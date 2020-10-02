@@ -1,6 +1,7 @@
 <script lang="ts">
-  export let text: string;
+  export let color: string = "yellow";
   export let pageNumber: string;
+  export let text: string;
 </script>
 
 <style>
@@ -13,7 +14,7 @@
 
 <a class="white" href={`/${pageNumber}`}>
   <div class="option">
-    <p class="yellow">{text}</p>
+    <p class={color}>{text}</p>
     <p>{pageNumber}</p>
   </div>
 </a>
