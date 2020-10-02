@@ -6,14 +6,12 @@
 	import { stores } from '@sapper/app';
 	const { page } = stores();
 	let pageNumber: number = 100;
-	
 
 	$: pageNumber = +($page.path.replace('/', ''));
 </script>
 
 <style>
 	.teletext {
-		height: 100vh;
 		width: 100vw;
 	}
 	

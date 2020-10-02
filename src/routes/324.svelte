@@ -10,7 +10,8 @@
       }
     });
     const standings = await res.json();
-    let teams = standings.standings[0].table.map((t: any) => {
+    const competitionName: string = standings.competition.name;
+    const teams = standings.standings[0].table.map((t: any) => {
       return {
         position: t.position,
         teamName: t.team.name.replace(' FC', '').replace(' AFC', ''),
@@ -25,6 +26,7 @@
     });
 
     return {
+      competitionName,
       lastUpdated: new Date(standings.competition.lastUpdated),
       table: teams
     };
@@ -36,8 +38,9 @@
   import { onDestroy } from 'svelte';
   import type { ITeam } from '../data/ITeam';
 
-  export let table: ITeam[];
+  export let competitionName: string;
   export let lastUpdated: Date;
+  export let table: ITeam[];
 
   let page: number = 1;
   let rows: ITeam[] = [];
@@ -59,10 +62,10 @@
   .title {
     display: flex;
     justify-content: space-between;
+    text-transform: uppercase;
   }
 
   .table-header {
-    padding-top: 3vh;
     padding-bottom: 3vh;
     display: grid;
     grid-template-columns: auto repeat(6, 35px) 50px;
@@ -90,7 +93,7 @@
 
 <div>
   <div class="title">
-    <p class="green">SKYBET CHAMPIONSHIP</p>
+    <p class="green">{competitionName}</p>
     <p>{page}/2</p>
   </div>
   <div class="table">
