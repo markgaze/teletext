@@ -11,6 +11,19 @@
 	pre {
 		font-size: 0.625rem;
 	}
+
+	.error {
+		background-color: blue;
+		display: grid;
+		text-align: center;
+		place-content: center;
+		height: 100%;
+		width: 100%;
+	}
+
+	.link {
+		margin-top: 2rem;
+	}
 </style>
 
 <svelte:head>
@@ -18,11 +31,11 @@
 </svelte:head>
 
 
-<div className="error">
-	<DoubleText text={`${status}`} />
-	<p className="link">Go back to page <a href="/" className="yellow">100</a></p>
+<div class="error">
+	<DoubleText background="blue" text={`${status}`} />
+	<p>{error.message}</p>
+	<p class="link">Go back to page <a href="/" class="yellow">100</a></p>
 	{#if dev && error.stack}
-		<p>{error.message}</p>
 		<pre>{error.stack}</pre>
 	{/if}
 </div>
