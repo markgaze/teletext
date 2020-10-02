@@ -52,6 +52,22 @@
   const interval = setInterval(() => page = (page === 1 ? 2 : 1), 10000);
 
   onDestroy(() => clearInterval(interval));
+
+  const getTeamName = (name: string) => {
+    if (name.length < 17) {
+      return name;
+    }
+
+    let retval: string = "";
+    let names: string[] = name.split(' ');
+    retval += `${names[0]} `;
+    names = names.slice(1);
+    names.forEach(n => {
+      retval += n.substring(0, 1) + " ";
+    });
+
+    return retval;
+  };
 </script>
 
 <style>
@@ -110,7 +126,7 @@
     {#each rows as row}
       <div class="table-row">
         <p class="center-align">{row.position}</p>
-        <p class="left-align">{row.teamName.substring(0, 16)}</p>
+        <p class="left-align">{getTeamName(row.teamName)}</p>
         <p>{row.played}</p>
         <p>{row.won}</p>
         <p>{row.drawn}</p>
