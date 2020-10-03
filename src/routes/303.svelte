@@ -24,10 +24,10 @@
       return {
         gameData: games.matches.map((g: any) => {
             return {
-              homeTeam: g.homeTeam.name.replace(' FC', '').replace(' AFC', ''),
+              homeTeam: g.homeTeam.name.replace(' FC', '').replace(' AFC', '').replace('AFC ', ''),
               homeTeamScore: g.score.fullTime.homeTeam,
               homeScorers: [],
-              awayTeam: g.awayTeam.name.replace(' FC', '').replace(' AFC', ''),
+              awayTeam: g.awayTeam.name.replace(' FC', '').replace(' AFC', '').replace('AFC ', ''),
               awayTeamScore: g.score.fullTime.awayTeam,
               awayScorers: [],
               kickoffTime: g.utcDate,
@@ -52,6 +52,7 @@
 <script lang="ts">
   import type IScore from "../data/IScore";
   import { onDestroy } from "svelte";
+  import { getTeamName } from '../data/TeamName';
 
   export let gameData: IScore[];
   export let competitionName: string;
@@ -76,6 +77,8 @@
       return date.format("HH:MM");
     }
   }
+
+  const maxLength: number = 15;
 </script>
 
 <style>
@@ -106,6 +109,7 @@
 
   .kickoff {
     text-align: right;
+    width: 3rem;
   }
 </style>
 
@@ -117,15 +121,15 @@
   <div class="results">
     {#each games as game}
     <div class="score">
-      <p class="cyan team">{game.homeTeam.toUpperCase()}</p>
+      <p class="cyan team">{getTeamName(game.homeTeam.toUpperCase(), maxLength)}</p>
       <p class="scoreline">{
         game.homeTeamScore !== null ? game.homeTeamScore : ""
       }{
-        game.kickoffTime === '' && (game.homeTeamScore !== null && game.awayTeamScore !== null) ? "-" : "v"
+        convertDateToKickoffTime(game.kickoffTime) === '' && (game.homeTeamScore !== null && game.awayTeamScore !== null) ? "-" : "v"
       }{
         game.awayTeamScore !== null ? game.awayTeamScore: ""
       }</p>
-      <p class="cyan team">{game.awayTeam.toUpperCase()}</p>
+      <p class="cyan team">{getTeamName(game.awayTeam.toUpperCase(), maxLength)}</p>
       <p class="kickoff">{convertDateToKickoffTime(game.kickoffTime)}</p>
     </div>
     {/each}

@@ -37,6 +37,7 @@
   import dayjs from 'dayjs';
   import { onDestroy } from 'svelte';
   import type { ITeam } from '../data/ITeam';
+  import { getTeamName } from '../data/TeamName';
 
   export let competitionName: string;
   export let lastUpdated: Date;
@@ -52,22 +53,6 @@
   const interval = setInterval(() => page = (page === 1 ? 2 : 1), 10000);
 
   onDestroy(() => clearInterval(interval));
-
-  const getTeamName = (name: string) => {
-    if (name.length < 17) {
-      return name;
-    }
-
-    let retval: string = "";
-    let names: string[] = name.split(' ');
-    retval += `${names[0]} `;
-    names = names.slice(1);
-    names.forEach(n => {
-      retval += n.substring(0, 1);
-    });
-
-    return retval;
-  };
 </script>
 
 <style>
