@@ -72,7 +72,11 @@
     if (date.isBefore(now)) {
       return '';
     } else if (date.isAfter(now)) {
-      return date.format("ddd");
+      if (date.diff(now, "week") < 1) {
+        return date.format("ddd");
+      } else {
+        return date.format("DD/MM");
+      }
     } else {
       return date.format("HH:MM");
     }
@@ -109,7 +113,7 @@
 
   .kickoff {
     text-align: right;
-    width: 3rem;
+    width: 5rem;
   }
 </style>
 
